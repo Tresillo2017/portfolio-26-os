@@ -6,11 +6,16 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "@types/exif-js": "^2.3.1",
     "@types/jest": "^27.4.1",
     "@types/node": "^16.11.26",
     "@types/react": "^17.0.40",
     "@types/react-dom": "^17.0.13",
+    "axios": "^1.10.0",
+    "cors": "^2.8.5",
     "emulators-ui": "^0.73.1",
+    "exif-js": "^2.3.0",
+    "express": "^5.1.0",
     "framer-motion": "^6.2.9",
     "js-dos": "^7.3.9",
     "react": "^17.0.2",
@@ -45,5 +50,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "core-js",
+      "core-js-pure"
+    ]
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^4.17.23"
   }
 }

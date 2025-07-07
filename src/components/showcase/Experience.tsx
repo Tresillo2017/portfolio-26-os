@@ -10,71 +10,65 @@ const Experience: React.FC<ExperienceProps> = (props) => {
             <div style={styles.headerContainer}>
                 <div style={styles.header}>
                     <div style={styles.headerRow}>
-                        <h1>Hover</h1>
+                        <h1>SpainRP</h1>
                         <a
                             rel="noreferrer"
                             target="_blank"
-                            href={'https://hover.gg/'}
+                            href={'https://spainrp.me/'}
                         >
-                            <h4>www.hover.gg</h4>
+                            <h4>spainrp.me</h4>
                         </a>
                     </div>
                     <div style={styles.headerRow}>
-                        <h3>Frontend Engineer</h3>
+                        <h3>FullStack Engineer</h3>
                         <b>
-                            <p>Summer 2020 - Fall 2021</p>
+                            <p>Summer 2021 - Fall 2025</p>
                         </b>
                     </div>
                 </div>
             </div>
             <div className="text-block">
                 <p>
-                    Targeted towards online content creators and streamers
-                    looking to build a brand, Hover is the home of over 150K
-                    users. Written in Typescript using React, React-Native,
-                    Framer, Express, and Redux.
+                    A minecraft server focused on roleplay and community. 
+                    I developed the Webpage using PHP and MySQL. 
+                    Used C# to create a custom launcher using WinUI 3. 
+                    And Github Actions to automate the deployment of the launcher.
                 </p>
                 <br />
                 <ul>
                     <li>
                         <p>
-                            Architected and engineered the vertical scrolling
-                            discover player which, at its daily peak, was
-                            responsible for generating over 600,000 views across
-                            20,000 active users.
+                            Developed and maintained the server website using PHP and MySQL, 
+                            providing players with server information, news updates, and 
+                            community features.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Designed and implemented multiple features to
-                            increase app usability and user experience while
-                            ensuring the quality, maintainability and
-                            scalability of the front end as the user base grew
-                            by over 50,000.
+                            Created a custom game launcher application using C# and WinUI 3, 
+                            streamlining the player onboarding process and improving user 
+                            accessibility to the server.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Coordinated major refactors targeted towards app
-                            optimization and performance resulting in a smoother
-                            user experience and accomplished by eliminating
-                            redundant re-renders and API calls by over 50%.
+                            Implemented automated deployment pipelines using GitHub Actions, 
+                            ensuring reliable and efficient distribution of launcher updates 
+                            to the player base.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Directed and executed an internal migration of 3
-                            individual repositories to a single monorepo,
-                            greatly reducing overhead for developing new
-                            features, fixing bugs, and managing dependencies.
+                            Built server-side modifications and plugins to enhance the 
+                            roleplay experience, focusing on community engagement and 
+                            immersive gameplay mechanics.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Rebuilt the website with React and shared mobile app
-                            components allowing users to access a wide variety
-                            of app interactions entirely on the web, resulting
-                            in over 700,000 total site visits.
+                            Managed database operations and server infrastructure to 
+                            support a growing community of active players and maintain 
+                            optimal server performance.
                         </p>
                     </li>
                 </ul>
@@ -82,157 +76,58 @@ const Experience: React.FC<ExperienceProps> = (props) => {
             <div style={styles.headerContainer}>
                 <div style={styles.header}>
                     <div style={styles.headerRow}>
-                        <h1>BrACS</h1>
+                        <h1>SafeCircle</h1>
                         <a
                             target="_blank"
                             rel="noreferrer"
-                            href={'https://bracs.co/'}
+                            href={'https://safecircle.tech/'}
                         >
-                            <h4>www.bracs.co</h4>
+                            <h4>safecircle.tech</h4>
                         </a>
                     </div>
                     <div style={styles.headerRow}>
-                        <h3>Team Lead & Engineer</h3>
+                        <h3>Founder & Full Stack Engineer</h3>
                         <b>
-                            <p>Fall 2021 - Spring 2022</p>
+                            <p>2025 - Present</p>
                         </b>
                     </div>
                 </div>
             </div>
             <div className="text-block">
                 <p>
-                    Supervised and developed the front end of bracs.co, a
-                    beautifully simple and effective bracket creation and
-                    management engine. Written in Typescript using React and
-                    deployed using AWS Elastic Beanstalk.
+                    Founded SafeCircle, an AI to detect child predators in online conversations.
+                    Developed a demo using NextJS, and Vercel AI SDK.
+                    Then finetuned a LLM using Unsloth to detect child predators in online conversations.
+                    Learned SysAdmin to support multiple users and handle server management.
                 </p>
                 <br />
                 <ul>
                     <li>
                         <p>
-                            Managed the project and team members by conducting
-                            bi-weekly stand-ups.
+                            Founded and developed SafeCircle, an AI-powered platform 
+                            designed to detect and prevent child predatory behavior 
+                            in online conversations.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Architected bracket view UI using React Flow and
-                            custom bracket data types built from binary trees.
+                            Built a functional demo application using NextJS and 
+                            Vercel AI SDK, showcasing real-time conversation analysis 
+                            and threat detection capabilities.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Created conversion algorithms to serialize bracket
-                            tree data to allow for saving in the cloud.
+                            Fine-tuned a Large Language Model using Unsloth framework 
+                            to accurately identify predatory patterns and behaviors 
+                            in text-based communications.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Implemented bracket generation utilities which
-                            employ gray code for proper team seeding and
-                            placement.
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            <div style={styles.headerContainer}>
-                <div style={styles.header}>
-                    <div style={styles.headerRow}>
-                        <h1>K-F/X</h1>
-                        <a
-                            target="_blank"
-                            rel="noreferrer"
-                            href={'https://kfxnyc.com/'}
-                        >
-                            <h4>www.kfxnyc.com</h4>
-                        </a>
-                    </div>
-                    <div style={styles.headerRow}>
-                        <h3>Special Effects Technician</h3>
-                        <b>
-                            <p>Fall 2019, Summer 2021</p>
-                        </b>
-                    </div>
-                </div>
-            </div>
-            <div className="text-block">
-                <p>
-                    Applied problem solving and technical skills to operate
-                    large equipment such as rain machines, fog machines, small
-                    explosives and general rigging with a professional crew of
-                    50+ people.
-                </p>
-                <br />
-                <h3 style={styles.indent}>Screen Credits:</h3>
-                <ul>
-                    <li style={styles.row}>
-                        <p>• Ray Donovan</p>
-                        <p>
-                            [{' '}
-                            <a
-                                href="https://www.sho.com/ray-donovan"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                SHOWTIME
-                            </a>{' '}
-                            ]
-                        </p>
-                    </li>
-                    <li style={styles.row}>
-                        <p>• Ray Donovan: The Movie</p>
-                        <p>
-                            [{' '}
-                            <a
-                                href="https://www.sho.com/titles/3508117/ray-donovan-the-movie"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                SHOWTIME
-                            </a>{' '}
-                            ]
-                        </p>
-                    </li>
-                    <li style={styles.row}>
-                        <p>• Hightown</p>
-                        <p>
-                            [{' '}
-                            <a
-                                href="https://www.starz.com/us/en/series/hightown/57463"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                STARZ
-                            </a>{' '}
-                            ]
-                        </p>
-                    </li>
-                    <li style={styles.row}>
-                        <p>• Bull</p>
-                        <p>
-                            [{' '}
-                            <a
-                                href="https://www.cbs.com/shows/bull/"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                CBS
-                            </a>{' '}
-                            ]
-                        </p>
-                    </li>
-                    <li style={styles.row}>
-                        <p>• At Home with Amy Sedaris</p>
-                        <p>
-                            [{' '}
-                            <a
-                                href="https://www.trutv.com/shows/at-home-with-amy-sedaris"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                truTV
-                            </a>{' '}
-                            ]
+                            Acquired system administration skills to manage multi-user 
+                            environments and maintain server infrastructure supporting 
+                            the AI detection platform.
                         </p>
                     </li>
                 </ul>

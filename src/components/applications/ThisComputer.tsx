@@ -1,6 +1,7 @@
 import React from 'react';
-// import DesktopShortcut from '../os/DesktopShortcut';
+import DesktopShortcut from '../os/DesktopShortcut';
 import Window from '../os/Window';
+import { styles } from '../os/DragIndicator';
 
 export interface ThisComputerProps extends WindowAppProps {}
 
@@ -24,7 +25,7 @@ const ThisComputerApp: React.FC<ThisComputerProps> = (props) => {
                     width="100%"
                     height="100%"
                 />
-                {/* <div style={}>
+                {/* <div style={styles.desktopShortcuts}>
                     <DesktopShortcut
                         icon="computerBig"
                         invertText

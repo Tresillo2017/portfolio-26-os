@@ -400,3 +400,448 @@ input:active {
     cursor: pointer;
     color: white;
 }
+
+/* Steam Gaming Section Styles - Updated Design */
+.steam-profile-section {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    border: 2px solid #c0c0c0;
+    padding: 24px;
+    margin: 16px 0;
+    box-shadow: inset -1px -1px #000000, inset 1px 1px #dfdfdf, inset -2px -2px #808080, inset 2px 2px #ffffff;
+    border-radius: 0;
+}
+
+/* Loading States */
+.steam-loading {
+    text-align: center;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #808080;
+}
+
+.loading-text {
+    color: #ffffff;
+    font-family: 'MS Sans Serif', sans-serif;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.loading-spinner {
+    color: #00ff00;
+    font-family: 'Terminal', monospace;
+    animation: blink 1s infinite;
+}
+
+.steam-error {
+    background: rgba(255, 0, 0, 0.2);
+    border: 1px solid #ff0000;
+    padding: 16px;
+    color: #ffffff;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 12px;
+}
+
+/* Profile Header */
+.steam-profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid #808080;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+}
+
+.profile-avatar {
+    position: relative;
+}
+
+.profile-avatar img {
+    width: 64px;
+    height: 64px;
+    border: 2px solid #c0c0c0;
+    image-rendering: pixelated;
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+}
+
+.status-indicator.online {
+    background: #00ff00;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.profile-info h2 {
+    color: #ffffff;
+    margin: 0 0 8px 0;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 18px;
+    text-shadow: 2px 2px 0px #000000;
+}
+
+.profile-status {
+    color: #00ff00;
+    font-family: 'Terminal', monospace;
+    font-size: 12px;
+    margin: 4px 0 8px 0;
+    text-shadow: 1px 1px 0px #000000;
+}
+
+.profile-link {
+    color: #00ffff;
+    text-decoration: none;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 12px;
+}
+
+.profile-link:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Stats Grid */
+.steam-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background: linear-gradient(90deg, #2c2c2c 0%, #404040 50%, #2c2c2c 100%);
+    border: 1px solid #808080;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: inset -1px -1px #000000;
+}
+
+.stat-icon {
+    font-size: 24px;
+    filter: drop-shadow(1px 1px 0px #000000);
+}
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    color: #00ff00;
+    font-family: 'Terminal', monospace;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1;
+    text-shadow: 1px 1px 0px #000000;
+}
+
+.stat-label {
+    color: #c0c0c0;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+/* Games Section */
+.games-section {
+    margin-top: 24px;
+}
+
+.games-section h3 {
+    color: #ffffff;
+    margin: 0 0 16px 0;
+    font-family: 'MS Sans Serif', sans-serif;
+    text-shadow: 1px 1px 0px #000000;
+}
+
+.games-grid-improved {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.game-card-improved {
+    background: linear-gradient(90deg, #2c2c2c 0%, #404040 50%, #2c2c2c 100%);
+    border: 1px solid #808080;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    padding: 16px;
+    box-shadow: inset -1px -1px #000000;
+    transition: all 0.2s ease;
+}
+
+.game-card-improved:hover {
+    background: linear-gradient(90deg, #404040 0%, #505050 50%, #404040 100%);
+    border-color: #ffffff;
+}
+
+.game-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.game-icon-placeholder {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #808080;
+    font-size: 16px;
+}
+
+.game-title-info h4 {
+    color: #ffffff;
+    margin: 0;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 14px;
+    text-shadow: 1px 1px 0px #000000;
+    line-height: 1.2;
+}
+
+.game-appid {
+    color: #808080;
+    font-family: 'Terminal', monospace;
+    font-size: 10px;
+    margin: 2px 0 0 0;
+}
+
+.game-stats {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 12px;
+    border: 1px solid #808080;
+    margin-bottom: 12px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.stat-row:last-child {
+    margin-bottom: 0;
+}
+
+.stat-row .stat-label {
+    color: #c0c0c0;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 11px;
+}
+
+.stat-row .stat-value {
+    color: #00ff00;
+    font-family: 'Terminal', monospace;
+    font-size: 11px;
+    text-shadow: 1px 1px 0px #000000;
+}
+
+.game-description p {
+    color: #e0e0e0;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 11px;
+    font-style: italic;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Gaming Note */
+.gaming-note {
+    margin-top: 24px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px dashed #808080;
+}
+
+.note-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.note-icon {
+    font-size: 16px;
+}
+
+.note-header h4 {
+    color: #ffffff;
+    margin: 0;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 14px;
+    text-shadow: 1px 1px 0px #000000;
+}
+
+.gaming-note p {
+    color: #e0e0e0;
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 0;
+    font-family: 'MS Sans Serif', sans-serif;
+}
+
+/* Legacy Steam Styles (for backward compatibility) */
+.steam-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.steam-header h3 {
+    color: #ffffff;
+    margin: 0;
+    text-shadow: 1px 1px 0px #000000;
+}
+
+.steam-link a {
+    color: #00ffff;
+    text-decoration: none;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 12px;
+}
+
+.steam-link a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.steam-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 24px;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #808080;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+}
+
+.stat-item .stat-label {
+    color: #c0c0c0;
+    font-size: 11px;
+    font-family: 'MS Sans Serif', sans-serif;
+    text-transform: uppercase;
+}
+
+.stat-item .stat-value {
+    color: #00ff00;
+    font-weight: bold;
+    font-family: 'Terminal', monospace;
+    font-size: 14px;
+    text-shadow: 1px 1px 0px #000000;
+}
+
+.games-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.game-card {
+    background: linear-gradient(90deg, #2c2c2c 0%, #404040 50%, #2c2c2c 100%);
+    border: 1px solid #808080;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    padding: 16px;
+    box-shadow: inset -1px -1px #000000;
+}
+
+.game-info h4 {
+    color: #ffffff;
+    margin: 0 0 8px 0;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 14px;
+    text-shadow: 1px 1px 0px #000000;
+}
+
+.play-time {
+    color: #00ff00;
+    font-family: 'Terminal', monospace;
+    font-size: 12px;
+    margin: 4px 0;
+}
+
+.last-played {
+    color: #ffff00;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 11px;
+    margin: 4px 0;
+}
+
+.game-description {
+    margin-top: 8px;
+}
+
+.game-description small {
+    color: #c0c0c0;
+    font-style: italic;
+    font-size: 11px;
+}
+
+/* Responsive adjustments for Steam section */
+@media (max-width: 768px) {
+    .steam-profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+    
+    .steam-stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .games-grid-improved {
+        grid-template-columns: 1fr;
+    }
+    
+    .steam-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .steam-stats {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .stat-item {
+        flex-direction: row;
+        justify-content: space-between;
+        min-width: unset;
+        width: 100%;
+    }
+}
