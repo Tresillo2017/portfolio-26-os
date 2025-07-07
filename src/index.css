@@ -486,6 +486,11 @@ input:active {
     100% { opacity: 1; }
 }
 
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
 .profile-info h2 {
     color: #ffffff;
     margin: 0 0 8px 0;
@@ -844,4 +849,16 @@ input:active {
         min-width: unset;
         width: 100%;
     }
+}
+
+/* Music app animations */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
 }

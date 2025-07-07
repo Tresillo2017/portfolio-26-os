@@ -1,6 +1,5 @@
 import React from 'react';
-import me from '../../assets/pictures/workingAtComputer.jpg';
-import meNow from '../../assets/pictures/currentme.jpg';
+import meNow from '../../assets/pictures/me.jpg';
 import { Link } from 'react-router-dom';
 import ResumeDownload from './ResumeDownload';
 
@@ -10,7 +9,7 @@ const About: React.FC<AboutProps> = (props) => {
     return (
         // add on resize listener
         <div className="site-page-content">
-            {/* <img src={me} style={styles.topImage} alt="" /> */}
+            {/* <img src={meNow} style={styles.topImage} alt="" /> */}
             <h1 style={{ marginLeft: -16 }}>Welcome</h1>
             <h3>I'm Tomas Palma</h3>
             <br />
@@ -41,7 +40,7 @@ const About: React.FC<AboutProps> = (props) => {
                 </p>
                 <br />
                 {/* <div className="captioned-image">
-                    <img src={me} style={styles.image} alt="" />
+                    <img src={meNow} style={styles.image} alt="" />
                     <p>
                         <sub>
                             <b>Figure 1:</b> A real photo of me developing this
@@ -96,14 +95,14 @@ const About: React.FC<AboutProps> = (props) => {
                             my fraternity and thoroughly enjoyed the community.
                         </p>
                     </div>
-                    {/* <div style={styles.verticalImage}>
+                    <div style={styles.verticalImage}>
                         <img src={meNow} style={styles.image} alt="" />
                         <p>
                             <sub>
-                                <b>Figure 2:</b> Me, April 2022
+                                <b>Figure 1:</b> Me, March 2025
                             </sub>
                         </p>
-                    </div> */}
+                    </div>
                 </div>
                 <br />
                 <br />

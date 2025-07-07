@@ -11,6 +11,8 @@ import DesktopShortcut, { DesktopShortcutProps } from './DesktopShortcut';
 import Scrabble from '../applications/Scrabble';
 import { IconName } from '../../assets/icons';
 import Credits from '../applications/Credits';
+import Music from '../applications/Music';
+import backgroundImage from '../../assets/pictures/background.png';
 
 export interface DesktopProps {}
 
@@ -35,6 +37,12 @@ const APPLICATIONS: {
         name: 'My Showcase',
         shortcutIcon: 'showcaseIcon',
         component: ShowcaseExplorer,
+    },
+    music: {
+        key: 'music',
+        name: 'Music Stats',
+        shortcutIcon: 'cd',
+        component: Music,
     },
     trail: {
         key: 'trail',
@@ -260,7 +268,11 @@ const styles: StyleSheetCSS = {
     desktop: {
         minHeight: '100%',
         flex: 1,
-        backgroundColor: Colors.turquoise,
+        // backgroundColor: Colors.turquoise,
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
     },
     shutdown: {
         minHeight: '100%',
