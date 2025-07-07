@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import Colors from '../../constants/colors';
 import ShowcaseExplorer from '../applications/ShowcaseExplorer';
 import Doom from '../applications/Doom';
 import OregonTrail from '../applications/OregonTrail';

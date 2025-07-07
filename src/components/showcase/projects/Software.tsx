@@ -74,14 +74,4 @@ const SoftwareProjects: React.FC<SoftwareProjectsProps> = (props) => {
     );
 };
 
-const styles: StyleSheetCSS = {
-    video: {
-        width: '100%',
-        padding: 12,
-    },
-    caption: {
-        width: '80%',
-    },
-};
-
 export default SoftwareProjects;

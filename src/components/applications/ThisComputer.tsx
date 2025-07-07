@@ -1,7 +1,5 @@
 import React from 'react';
-import DesktopShortcut from '../os/DesktopShortcut';
 import Window from '../os/Window';
-import { styles } from '../os/DragIndicator';
 
 export interface ThisComputerProps extends WindowAppProps {}
 
