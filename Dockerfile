@@ -3,6 +3,14 @@ FROM node:18-alpine AS build
 
 WORKDIR /app
 
+# Accept build arguments
+ARG REACT_APP_LASTFM_API_KEY
+ARG REACT_APP_LASTFM_USERNAME
+
+# Set environment variables from build args
+ENV REACT_APP_LASTFM_API_KEY=$REACT_APP_LASTFM_API_KEY
+ENV REACT_APP_LASTFM_USERNAME=$REACT_APP_LASTFM_USERNAME
+
 # Copy package files
 COPY package.json package-lock.json* ./
 

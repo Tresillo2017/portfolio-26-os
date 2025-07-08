@@ -29,4 +29,7 @@ jobs:
           tags: |
             ghcr.io/tresillo2017/portfolio-26-os:latest
             ghcr.io/tresillo2017/portfolio-26-os:${{ github.sha }}
-          platforms: linux/amd64     
+          platforms: linux/amd64
+          build-args: |
+            REACT_APP_LASTFM_API_KEY=${{ secrets.REACT_APP_LASTFM_API_KEY }}
+            REACT_APP_LASTFM_USERNAME=${{ secrets.REACT_APP_LASTFM_USERNAME }}     
