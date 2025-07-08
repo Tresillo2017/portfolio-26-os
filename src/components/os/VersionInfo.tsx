@@ -5,8 +5,8 @@ export interface VersionInfoProps {}
 const VersionInfo: React.FC<VersionInfoProps> = () => {
     // Hardcoded version information - update manually for each release
     const versionInfo = {
-        version: '0.1.0',
-        build: '1000',
+        version: '0.1.1',
+        build: '1013',
         releaseDate: '2025-07-08'
     };
 
