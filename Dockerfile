@@ -9,6 +9,9 @@ COPY package.json package-lock.json* ./
 # Install dependencies
 RUN --mount=type=cache,id=npm,target=/root/.npm npm ci --only=production
 
+# Copy environment file (if exists)
+COPY .env* ./
+
 # Copy source code
 COPY . .
 
