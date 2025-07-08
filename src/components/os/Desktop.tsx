@@ -11,6 +11,7 @@ import Scrabble from '../applications/Scrabble';
 import { IconName } from '../../assets/icons';
 import Credits from '../applications/Credits';
 import Music from '../applications/Music';
+import VersionInfo from './VersionInfo';
 import backgroundImage from '../../assets/pictures/background.png';
 
 export interface DesktopProps {}
@@ -254,6 +255,7 @@ const Desktop: React.FC<DesktopProps> = (props) => {
                 toggleMinimize={toggleMinimize}
                 shutdown={startShutdown}
             />
+            <VersionInfo />
         </div>
     ) : (
         <ShutdownSequence
