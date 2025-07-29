@@ -11,6 +11,7 @@ import Scrabble from '../applications/Scrabble';
 import { IconName } from '../../assets/icons';
 import Credits from '../applications/Credits';
 import Music from '../applications/Music';
+import Changelog from '../applications/Changelog';
 import VersionInfo from './VersionInfo';
 import backgroundImage from '../../assets/pictures/background.png';
 
@@ -26,12 +27,12 @@ const APPLICATIONS: {
         component: React.FC<ExtendedWindowAppProps<any>>;
     };
 } = {
-    computer: {
-        key: 'computer',
-        name: 'This Computer',
-        shortcutIcon: 'computerBig',
-        component: ThisComputer,
-    },
+    // computer: {
+    //     key: 'computer',
+    //     name: 'This Computer',
+    //     shortcutIcon: 'computerBig',
+    //     component: ThisComputer,
+    // },
     showcase: {
         key: 'showcase',
         name: 'My Showcase',
@@ -73,6 +74,12 @@ const APPLICATIONS: {
         name: 'Credits',
         shortcutIcon: 'credits',
         component: Credits,
+    },
+    changelog: {
+        key: 'changelog',
+        name: 'Changelog',
+        shortcutIcon: 'computerBig',
+        component: Changelog,
     },
 };
 

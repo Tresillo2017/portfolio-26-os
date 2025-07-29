@@ -43,6 +43,30 @@ const MusicApp: React.FC<MusicAppProps> = (props) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
+    // Add CSS animations
+    useEffect(() => {
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes vinylRotate {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+            @keyframes blink {
+                0%, 50% { opacity: 1; }
+                51%, 100% { opacity: 0.3; }
+            }
+            @keyframes pulse {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.5; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        return () => {
+            document.head.removeChild(style);
+        };
+    }, []);
+
     // Responsive layout calculations based on window size
     const isSmall = width < 600;
     const isMedium = width < 800;
@@ -117,7 +141,10 @@ const MusicApp: React.FC<MusicAppProps> = (props) => {
         return (
             <div style={styles.nowPlayingSection}>
                 <div style={styles.sectionTitleBar}>
-                    <span style={styles.sectionTitleText}>♪ Now Playing</span>
+                    <span style={styles.sectionTitleText}>
+                        <span style={{ fontSize: 14, marginRight: 4 }}>🎵</span>
+                        Now Playing
+                    </span>
                 </div>
                 <div style={{
                     ...styles.nowPlayingCard,
@@ -138,16 +165,29 @@ const MusicApp: React.FC<MusicAppProps> = (props) => {
                             ...styles.albumArt,
                             width: albumArtSize,
                             height: albumArtSize,
+                            position: 'relative',
                         }}>
-                            {nowPlaying && getImageUrl(nowPlaying.image) ? (
-                                <img 
-                                    src={getImageUrl(nowPlaying.image)} 
-                                    alt="Album Art"
-                                    style={styles.albumImage}
-                                />
-                            ) : (
-                                <div style={styles.noAlbumArt}>♪</div>
-                            )}
+                            <div style={{
+                                ...styles.vinylRecord,
+                                width: albumArtSize,
+                                height: albumArtSize,
+                                animation: nowPlaying ? 'vinylRotate 3s linear infinite' : 'none',
+                            }}>
+                                {nowPlaying && getImageUrl(nowPlaying.image) ? (
+                                    <img 
+                                        src={getImageUrl(nowPlaying.image)} 
+                                        alt="Album Art"
+                                        style={styles.albumImage}
+                                    />
+                                ) : (
+                                    <div style={styles.noAlbumArt}>♪</div>
+                                )}
+                                <div style={{
+                                    ...styles.vinylCenter,
+                                    width: albumArtSize * 0.25,
+                                    height: albumArtSize * 0.25,
+                                }}></div>
+                            </div>
                         </div>
                         <div style={{
                             ...styles.trackInfo,
@@ -198,23 +238,31 @@ const MusicApp: React.FC<MusicAppProps> = (props) => {
                         display: 'flex',
                         alignItems: 'center',
                         gap: 8,
-                        backgroundColor: nowPlaying ? colors.lightGray : colors.white,
-                        border: nowPlaying ? `1px outset ${colors.lightGray}` : `1px inset ${colors.lightGray}`,
-                        padding: '10px 14px',
+                        backgroundColor: nowPlaying ? colors.darkBlue : colors.lightGray,
+                        border: nowPlaying ? `2px outset ${colors.darkBlue}` : `2px inset ${colors.lightGray}`,
+                        padding: '8px 12px',
                         borderRadius: 0,
                         flexShrink: 0,
                         minWidth: 'fit-content',
                         fontFamily: 'MSSerif, sans-serif',
+                        boxShadow: nowPlaying ? `2px 2px 4px rgba(0,0,0,0.3)` : `inset 1px 1px 2px ${colors.darkGray}`,
+                        background: nowPlaying 
+                            ? `linear-gradient(135deg, ${colors.darkBlue} 0%, ${colors.blue} 50%, ${colors.darkBlue} 100%)`
+                            : colors.lightGray,
                     }}>
                         <span style={{
                             color: nowPlaying ? colors.red : colors.darkGray,
-                            fontSize: 16,
+                            fontSize: 18,
                             animation: nowPlaying ? 'blink 1s infinite' : 'none',
+                            textShadow: nowPlaying ? '1px 1px 0px rgba(0,0,0,0.5)' : 'none',
+                            filter: nowPlaying ? 'drop-shadow(0 0 3px rgba(255,0,0,0.7))' : 'none',
                         }}>●</span>
                         <span style={{
-                            color: nowPlaying ? colors.black : colors.darkGray,
+                            color: nowPlaying ? colors.white : colors.darkGray,
                             fontWeight: 'bold',
-                            fontSize: isSmall ? 12 : 14,
+                            fontSize: isSmall ? 13 : 15,
+                            textShadow: nowPlaying ? '1px 1px 0px rgba(0,0,0,0.8)' : 'none',
+                            letterSpacing: '0.5px',
                         }}>{nowPlaying ? 'LIVE' : 'OFFLINE'}</span>
                     </div>
                 </div>
@@ -586,18 +634,24 @@ const styles: StyleSheetCSS = {
         border: `2px outset ${colors.lightGray}`,
         backgroundColor: colors.lightGray,
         marginBottom: 6,
+        boxShadow: `2px 2px 4px rgba(0,0,0,0.2)`,
     },
     sectionTitleBar: {
-        background: `linear-gradient(90deg, ${colors.darkBlue} 0%, ${colors.blue} 100%)`,
+        background: `linear-gradient(90deg, ${colors.darkBlue} 0%, ${colors.blue} 50%, ${colors.darkBlue} 100%)`,
         color: colors.white,
-        padding: '2px 8px',
-        fontSize: 11,
+        padding: '4px 12px',
+        fontSize: 12,
         fontWeight: 'bold',
         fontFamily: 'MSSerif, sans-serif',
         borderBottom: `1px solid ${colors.darkGray}`,
+        position: 'relative',
+        boxShadow: `inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.3)`,
     },
     sectionTitleText: {
-        textShadow: '1px 1px 0px rgba(0,0,0,0.5)',
+        textShadow: '1px 1px 2px rgba(0,0,0,0.7)',
+        display: 'flex',
+        alignItems: 'center',
+        gap: 6,
     },
     nowPlayingCard: {
         display: 'flex',
@@ -608,6 +662,8 @@ const styles: StyleSheetCSS = {
         backgroundColor: colors.white,
         margin: 4,
         minHeight: 80,
+        boxShadow: `inset 2px 2px 4px rgba(0,0,0,0.1)`,
+        background: `linear-gradient(145deg, ${colors.white} 0%, #f8f8f8 100%)`,
     },
     albumArt: {
         width: 64,
@@ -617,11 +673,45 @@ const styles: StyleSheetCSS = {
         backgroundColor: colors.white,
         boxShadow: `inset 1px 1px 0px ${colors.darkGray}`,
         flexShrink: 0,
+        borderRadius: '50%',
+        position: 'relative',
+    },
+    vinylRecord: {
+        width: '100%',
+        height: '100%',
+        borderRadius: '50%',
+        position: 'relative',
+        transformOrigin: 'center',
+        background: `radial-gradient(circle at center, 
+            transparent 12%, 
+            rgba(0,0,0,0.1) 13%, 
+            transparent 14%, 
+            transparent 20%, 
+            rgba(0,0,0,0.05) 21%, 
+            transparent 22%, 
+            transparent 30%, 
+            rgba(0,0,0,0.05) 31%, 
+            transparent 32%
+        )`,
+    },
+    vinylCenter: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        backgroundColor: colors.darkGray,
+        borderRadius: '50%',
+        border: `1px solid ${colors.black}`,
+        boxShadow: `inset 0 0 3px ${colors.black}`,
+        zIndex: 10,
     },
     albumImage: {
         width: '100%',
         height: '100%',
         objectFit: 'cover',
+        borderRadius: '50%',
+        position: 'relative',
+        zIndex: 1,
     },
     noAlbumArt: {
         width: '100%',
@@ -633,6 +723,10 @@ const styles: StyleSheetCSS = {
         fontSize: 24,
         color: colors.darkGray,
         fontFamily: 'MSSerif, sans-serif',
+        borderRadius: '50%',
+        position: 'relative',
+        zIndex: 1,
+        background: `radial-gradient(circle at center, ${colors.lightGray} 0%, ${colors.darkGray} 100%)`,
     },
     trackInfo: {
         flex: 1,
@@ -649,6 +743,7 @@ const styles: StyleSheetCSS = {
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         lineHeight: 1.3,
+        textShadow: '0.5px 0.5px 0px rgba(0,0,0,0.1)',
     },
     artistName: {
         margin: '0 0 12px 0',
@@ -659,6 +754,7 @@ const styles: StyleSheetCSS = {
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         lineHeight: 1.3,
+        fontStyle: 'italic',
     },
     playingIndicator: {
         display: 'flex',
