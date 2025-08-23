@@ -1,7 +1,6 @@
 import React from 'react';
 import Window from '../os/Window';
 import colors from '../../constants/colors';
-import webringBadge from '../../assets/webring.gif';
 
 export interface FriendsProps extends WindowAppProps {}
 
@@ -56,7 +55,7 @@ const Friends: React.FC<FriendsProps> = (props) => {
                                 title="My site – add this badge to join the mini-webring"
                             >
                                 <img
-                                    src={webringBadge}
+                                    src="/webring.gif"
                                     alt="TomasPS badge"
                                     style={styles.badgeImage as React.CSSProperties}
                                     width={88}
