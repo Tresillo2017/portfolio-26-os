@@ -19,6 +19,7 @@ import windowsStartIcon from './windowsStartIcon.png';
 import scrabbleIcon from './scrabbleIcon.png';
 import close from './close.png';
 import cd from './cd.png';
+import netscape from './netscape.png';
 
 const icons = {
     windowResize: windowResize,
@@ -40,6 +41,7 @@ const icons = {
     windowsStartIcon: windowsStartIcon,
     trailIcon: trailIcon,
     cd: cd,
+    netscape: netscape,
 };
 
 export type IconName = keyof typeof icons;

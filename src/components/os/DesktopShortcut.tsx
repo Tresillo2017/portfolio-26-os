@@ -108,7 +108,18 @@ const DesktopShortcut: React.FC<DesktopShortcutProps> = ({
                         }
                     )}
                 />
-                <Icon icon={icon} style={styles.icon} />
+                <Icon
+                    icon={icon}
+                    style={Object.assign(
+                        {},
+                        styles.icon,
+                        icon === 'netscape' && {
+                            width: 32,
+                            height: 32,
+                            objectFit: 'contain',
+                        }
+                    )}
+                />
             </div>
             <div
                 className={
@@ -177,3 +188,6 @@ const styles: StyleSheetCSS = {
 };
 
 export default DesktopShortcut;
+
+// Explicit export to ensure this file is treated as a module under --isolatedModules
+export {};

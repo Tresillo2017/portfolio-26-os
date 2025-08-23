@@ -14,6 +14,7 @@ import Music from '../applications/Music';
 import Changelog from '../applications/Changelog';
 import VersionInfo from './VersionInfo';
 import backgroundImage from '../../assets/pictures/background.png';
+import Friends from '../applications/Friends';
 
 export interface DesktopProps {}
 
@@ -80,6 +81,12 @@ const APPLICATIONS: {
         name: 'Changelog',
         shortcutIcon: 'computerBig',
         component: Changelog,
+    },
+    friends: {
+        key: 'friends',
+        name: 'Friends',
+        shortcutIcon: 'netscape',
+        component: Friends,
     },
 };
 

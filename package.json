@@ -1,6 +1,6 @@
 {
   "name": "portfolio-2026-os",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
@@ -29,6 +29,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "prestart": "copy CHANGELOG.md public\\CHANGELOG.md >NUL 2>&1 || echo Sync changelog (dev)",
+    "prebuild": "copy CHANGELOG.md public\\CHANGELOG.md >NUL 2>&1 || echo Sync changelog (build)",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

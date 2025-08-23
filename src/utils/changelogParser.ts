@@ -84,22 +84,32 @@ export function parseChangelog(changelogContent: string): ChangelogEntry[] {
  */
 export async function fetchChangelog(): Promise<ChangelogEntry[]> {
     try {
-        // Try to fetch from public folder first (for built app)
-        let response = await fetch('/CHANGELOG.md');
-        
-        // If not found, try relative path (for development)
-        if (!response.ok) {
-            response = await fetch('./CHANGELOG.md');
+        // Use package.json version if injected at build (CRA: can expose via env var) else timestamp
+        const cacheBuster = (process.env.REACT_APP_VERSION || process.env.REACT_APP_BUILD || Date.now()).toString();
+        const candidates = [
+            `/CHANGELOG.md?v=${cacheBuster}`,
+            `./CHANGELOG.md?v=${cacheBuster}`
+        ];
+
+        let lastResponse: Response | null = null;
+        for (const url of candidates) {
+            try {
+                const response = await fetch(url, { cache: 'no-store' });
+                lastResponse = response;
+                if (response.ok) {
+                    const content = await response.text();
+                    const parsed = parseChangelog(content);
+                    if (parsed.length) {
+                        return parsed;
+                    }
+                }
+            } catch (innerErr) {
+                // Continue to next candidate
+            }
         }
-        
-        // If still not found, return fallback data
-        if (!response.ok) {
-            console.warn('Could not fetch CHANGELOG.md, using fallback data');
-            return getFallbackChangelog();
-        }
-        
-        const content = await response.text();
-        return parseChangelog(content);
+
+        console.warn('Could not fetch a valid CHANGELOG.md, using fallback data', lastResponse && lastResponse.status);
+        return getFallbackChangelog();
     } catch (error) {
         console.error('Error fetching changelog:', error);
         return getFallbackChangelog();
