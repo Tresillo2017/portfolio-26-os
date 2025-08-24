@@ -3,8 +3,6 @@ import ShowcaseExplorer from '../applications/ShowcaseExplorer';
 import Doom from '../applications/Doom';
 import OregonTrail from '../applications/OregonTrail';
 import ShutdownSequence from './ShutdownSequence';
-import ThisComputer from '../applications/ThisComputer';
-import Henordle from '../applications/Henordle';
 import Toolbar from './Toolbar';
 import DesktopShortcut, { DesktopShortcutProps } from './DesktopShortcut';
 import Scrabble from '../applications/Scrabble';
@@ -15,6 +13,7 @@ import Changelog from '../applications/Changelog';
 import VersionInfo from './VersionInfo';
 import backgroundImage from '../../assets/pictures/background.png';
 import Friends from '../applications/Friends';
+import Gallery from '../applications/Gallery';
 
 export interface DesktopProps {}
 
@@ -64,12 +63,6 @@ const APPLICATIONS: {
         shortcutIcon: 'scrabbleIcon',
         component: Scrabble,
     },
-    henordle: {
-        key: 'henordle',
-        name: 'Henordle',
-        shortcutIcon: 'henordleIcon',
-        component: Henordle,
-    },
     credits: {
         key: 'credits',
         name: 'Credits',
@@ -87,6 +80,12 @@ const APPLICATIONS: {
         name: 'Friends',
         shortcutIcon: 'netscape',
         component: Friends,
+    },
+    gallery: {
+        key: 'gallery',
+        name: 'Gallery',
+        shortcutIcon: 'gallery',
+        component: Gallery,
     },
 };
 

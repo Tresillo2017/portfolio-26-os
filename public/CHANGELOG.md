@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.5] - 2025-08-25
+
+### Gallery Application & Photography System Refactor
+
+#### Added
+
+- New Gallery application for browsing photography collection
+- Modal photo viewer with keyboard navigation (arrow keys, escape)
+- Gallery icon and integration with desktop shortcuts
+- Public photography folder structure for better asset management
+
+#### Changed
+
+- Moved photography assets from `src/assets/pictures/photography/` to `public/photography/`
+- Updated Gallery component to load photos from public folder via manifest
+- Improved photo organization and accessibility
+
 ## [0.1.4] - 2025-08-24
 
 ### Friends Application

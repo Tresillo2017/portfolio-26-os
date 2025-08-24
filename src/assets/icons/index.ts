@@ -20,6 +20,7 @@ import scrabbleIcon from './scrabbleIcon.png';
 import close from './close.png';
 import cd from './cd.png';
 import netscape from './netscape.png';
+import gallery from './gallery.png';
 
 const icons = {
     windowResize: windowResize,
@@ -42,6 +43,7 @@ const icons = {
     trailIcon: trailIcon,
     cd: cd,
     netscape: netscape,
+    gallery: gallery,
 };
 
 export type IconName = keyof typeof icons;

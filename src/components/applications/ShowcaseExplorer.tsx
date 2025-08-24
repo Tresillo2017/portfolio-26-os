@@ -7,9 +7,9 @@ import Experience from '../showcase/Experience';
 import Projects from '../showcase/Projects';
 import Contact from '../showcase/Contact';
 import SoftwareProjects from '../showcase/projects/Software';
-import PhotographyProjects from '../showcase/projects/Photography';
 import VerticalNavbar from '../showcase/VerticalNavbar';
 import useInitialWindowSize from '../../hooks/useInitialWindowSize';
+import PhotographyProjects from '../showcase/projects/Photography';
 
 export interface ShowcaseExplorerProps extends WindowAppProps {}
 

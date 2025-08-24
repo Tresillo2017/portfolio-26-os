@@ -27,3 +27,18 @@ npm run build
 # Serve the build using express
 npm start
 ```
+
+## Gallery App (Flickr Integration)
+
+The desktop now includes a Photo Gallery application that loads images from the public Flickr feed.
+
+Optional environment configuration (create a `.env` file at project root):
+
+```
+REACT_APP_FLICKR_USER_ID=12345678@N00
+```
+
+If `REACT_APP_FLICKR_USER_ID` is provided, the Gallery will display that user's public photos. If omitted, it will fall back to a generic public feed (tagged `portfolio`). No API key is required for the public feed endpoint.
+
+After setting the value, restart the dev server (`npm run dev`) so Create React App picks up the new env variable.
+
