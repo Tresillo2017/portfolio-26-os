@@ -45,18 +45,18 @@ const Friends: React.FC<FriendsProps> = (props) => {
                 </header>
                 <div style={styles.contentArea}>
                     <section style={styles.panel}>
-                        <div style={styles.panelHeader}>My Badge</div>
+                        <div style={styles.panelHeader}>My Button</div>
                         <div style={styles.myBadgeWrapper}>
                             <a
                                 href="https://tomasps.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 style={styles.badgeLink}
-                                title="My site – add this badge to join the mini-webring"
+                                title="My site – add this button to join the mini-webring"
                             >
                                 <img
                                     src="/webring.gif"
-                                    alt="TomasPS badge"
+                                    alt="TomasPS Button"
                                     style={styles.badgeImage as React.CSSProperties}
                                     width={88}
                                     height={31}
@@ -64,8 +64,8 @@ const Friends: React.FC<FriendsProps> = (props) => {
                             </a>
                         </div>
                         <p style={styles.copyNote as React.CSSProperties}>
-                            Save or copy this 88×31 badge and link it to <strong>https://tomasps.com</strong>. Then
-                            email me your site (and optional badge) to be added below – tiny handmade webring vibes.
+                            Save or copy this 88×31 button and link it to <strong>https://tomasps.com</strong>. Then
+                            email me your site (and optional button) to be added below – tiny handmade webring vibes.
                         </p>
                     </section>
                     <section style={styles.panelFriends}>
