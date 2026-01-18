@@ -24,14 +24,14 @@ const GalleryApp: React.FC<GalleryAppProps> = (props) => {
     
     const BATCH_SIZE = 12; // Load 12 photos at a time
 
-    // Function to load photos from external CDN
+    // Function to load photos from API endpoint (dynamically discovers photos)
     const loadPhotos = useCallback(async () => {
         try {
             setLoading(true);
             setError(null);
             
-            // Load photo list from local manifest
-            const response = await fetch('/photography/photos.json');
+            // Load photo list from API endpoint that discovers all photos
+            const response = await fetch('/api/photography/photos');
             if (!response.ok) {
                 throw new Error(`Failed to load photos: ${response.status}`);
             }
