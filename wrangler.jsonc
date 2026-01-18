@@ -1,13 +1,16 @@
 {
-  "name": "portfolio-26-os",
-  "compatibility_date": "2025-04-23",
-  "assets": {
-    "directory": "./public"
-  },
-  "r2_buckets": [
-    {
-      "binding": "PORTFOLIO_BUCKET",
-      "bucket_name": "portfolio26"
+    "name": "portfolio-26-os",
+    "compatibility_date": "2025-04-23",
+    "assets": {
+        "directory": "./build"
+    },
+    "r2_buckets": [
+        {
+            "binding": "PORTFOLIO_BUCKET",
+            "bucket_name": "portfolio26"
+        },
+    ],
+    "placement": {
+        "mode": "smart"
     }
-  ]
 }
