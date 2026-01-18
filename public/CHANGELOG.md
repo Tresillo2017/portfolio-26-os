@@ -25,12 +25,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Images load automatically 6 photos before reaching placeholders
 - Reduced initial bandwidth usage by over 75%
 
-#### Technical
-
-- Added wrangler.jsonc R2 bucket configuration
-- Implemented Cloudflare Pages Functions for image serving
-- Added @cloudflare/workers-types for TypeScript support
-
 ## [0.1.6] - 2025-09-03
 
 ### Updated Friends application and Resume 
