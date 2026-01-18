@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.7] - 2026-01-18
+
+### Photography CDN Integration & Performance Optimization
+
+#### Added
+
+- Cloudflare R2 bucket integration for photography storage
+- CDN domain (portfolio-media.tomasps.com) for optimized image delivery
+- Lazy loading system with progressive/infinite scroll
+- Visual placeholders for unloaded images
+- Photo counter showing loaded vs total photos
+- Intersection Observer for bandwidth-efficient loading
+
+#### Changed
+
+- Migrated 57 photos from local bundle to R2 storage via CDN
+- Gallery now loads photos in batches of 12 for improved performance
+- Images load automatically 6 photos before reaching placeholders
+- Reduced initial bandwidth usage by over 75%
+
+#### Technical
+
+- Added wrangler.jsonc R2 bucket configuration
+- Implemented Cloudflare Pages Functions for image serving
+- Added @cloudflare/workers-types for TypeScript support
+
 ## [0.1.6] - 2025-09-03
 
 ### Updated Friends application and Resume 

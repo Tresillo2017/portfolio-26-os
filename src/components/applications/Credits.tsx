@@ -8,12 +8,12 @@ export interface CreditsProps extends WindowAppProps {}
 const CREDITS = [
     {
         title: 'Engineering & Design',
-        rows: [['Henry Heffernan', 'All']],
+        rows: [['Tomas Palma Sanchez', 'All']],
     },
     {
         title: 'Modeling & Texturing',
         rows: [
-            ['Henry Heffernan', 'Texturing, Composition, & UV'],
+            ['Tomas Palma Sanchez', 'Texturing, Composition, & UV'],
             ['Mickael Boitte', 'Computer Model'],
             ['Sean Nicolas', 'Environment Models'],
         ],
@@ -21,7 +21,7 @@ const CREDITS = [
     {
         title: 'Sound Design',
         rows: [
-            ['Henry Heffernan', 'Mixing, Composition, & Foley'],
+            ['Tomas Palma Sanchez', 'Mixing, Composition, & Foley'],
             ['Sound Cassette', 'Office Ambience'],
             ['Windows 95 Startup Sound', 'Microsoft'],
         ],
@@ -29,9 +29,7 @@ const CREDITS = [
     {
         title: 'Special Thanks',
         rows: [
-            ['Bruno Simon', 'SimonDev'],
-            ['Lorelei Kravinsky', 'Scott Bass'],
-            ['Trey Briccetti', 'Mom, Dad & Angela'],
+            ['Henrry Heffernan', 'Initial Webpage Design'],
         ],
     },
     {

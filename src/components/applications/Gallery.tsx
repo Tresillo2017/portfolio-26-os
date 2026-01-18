@@ -15,32 +15,36 @@ const GalleryApp: React.FC<GalleryAppProps> = (props) => {
     const [width, setWidth] = useState(980);
     const [height, setHeight] = useState(680);
     const [photos, setPhotos] = useState<PhotoItem[]>([]);
+    const [displayedPhotos, setDisplayedPhotos] = useState<PhotoItem[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+    const [loadedCount, setLoadedCount] = useState(0);
+    const loadMoreRef = React.useRef<HTMLDivElement>(null);
+    
+    const BATCH_SIZE = 12; // Load 12 photos at a time
 
-    // Function to load photos from public/photography folder
+    // Function to load photos from external CDN
     const loadPhotos = useCallback(async () => {
         try {
             setLoading(true);
             setError(null);
             
-            // Try to load from photos.json manifest first
-            try {
-                const manifestResponse = await fetch('/photography/photos.json');
-                if (manifestResponse.ok) {
-                    const filenames: string[] = await manifestResponse.json();
-                    const photoItems: PhotoItem[] = filenames.map(filename => ({
-                        filename,
-                        url: `/photography/${filename}`,
-                        title: filename.replace(/\.(jpg|jpeg|png|gif|webp)$/i, '').replace(/^RUID/, 'Photo ')
-                    }));
-                    setPhotos(photoItems);
-                    return;
-                }
-            } catch (manifestError) {
-                console.log('Could not load photos manifest, falling back to static list');
+            // Load photo list from local manifest
+            const response = await fetch('/photography/photos.json');
+            if (!response.ok) {
+                throw new Error(`Failed to load photos: ${response.status}`);
             }
+            
+            const filenames: string[] = await response.json();
+            const photoItems: PhotoItem[] = filenames.map(filename => ({
+                filename,
+                url: `https://portfolio-media.tomasps.com/photography/${filename}`,
+                title: filename.replace(/\.(jpg|jpeg|png|gif|webp)$/i, '').replace(/^RUID/, 'Photo ')
+            }));
+            setPhotos(photoItems);
+            setDisplayedPhotos(photoItems.slice(0, BATCH_SIZE));
+            setLoadedCount(BATCH_SIZE);
             
         } catch (e: any) {
             setError(e.message || 'Failed to load photos');
@@ -49,9 +53,40 @@ const GalleryApp: React.FC<GalleryAppProps> = (props) => {
         }
     }, []);
 
+    // Load more photos
+    const loadMore = useCallback(() => {
+        if (loadedCount >= photos.length) return;
+        
+        const nextBatch = photos.slice(loadedCount, loadedCount + BATCH_SIZE);
+        setDisplayedPhotos(prev => [...prev, ...nextBatch]);
+        setLoadedCount(prev => prev + BATCH_SIZE);
+    }, [photos, loadedCount]);
+
+    // Intersection Observer for infinite scroll
+    useEffect(() => {
+        if (!loadMoreRef.current || loading || loadedCount >= photos.length) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    loadMore();
+                }
+            },
+            { threshold: 0.1, rootMargin: '100px' }
+        );
+
+        observer.observe(loadMoreRef.current);
+        return () => observer.disconnect();
+    }, [loadMore, loading, loadedCount, photos.length]);
+
     useEffect(() => { loadPhotos(); }, [loadPhotos]);
 
-    const openModal = (i: number) => setSelectedIndex(i);
+    const openModal = (i: number) => {
+        // Find the real index in the full photos array
+        const photo = displayedPhotos[i];
+        const realIndex = photos.findIndex(p => p.filename === photo.filename);
+        setSelectedIndex(realIndex);
+    };
     const closeModal = () => setSelectedIndex(null);
     const prev = useCallback(() => setSelectedIndex(i => (i === null ? null : (i - 1 + photos.length) % photos.length)), [photos.length]);
     const next = useCallback(() => setSelectedIndex(i => (i === null ? null : (i + 1) % photos.length)), [photos.length]);
@@ -90,7 +125,7 @@ const GalleryApp: React.FC<GalleryAppProps> = (props) => {
             height={height}
             windowTitle="Photo Gallery"
             windowBarIcon="gallery"
-            bottomLeftText={`${photos.length} photos from local collection`}
+            bottomLeftText={`${photos.length} photos`}
             closeWindow={props.onClose}
             onInteract={props.onInteract}
             minimizeWindow={props.onMinimize}
@@ -100,24 +135,46 @@ const GalleryApp: React.FC<GalleryAppProps> = (props) => {
             <div style={styles.container}>
                 <div style={styles.header}>
                     <h2 style={styles.headerTitle}>Photography Gallery</h2>
+                    <div style={styles.loadingStatus}>
+                        {!loading && `Showing ${displayedPhotos.length} of ${photos.length} photos`}
+                    </div>
                 </div>
                 {loading && <div style={styles.statusBox}>Loading photos...</div>}
                 {error && !loading && <div style={styles.errorBox}>⚠ {error}</div>}
                 {!loading && !error && (
                     <div style={styles.grid}>
-                        {photos.map((p, i) => (
-                            <div key={p.filename + i} style={styles.card} onClick={() => openModal(i)}>
-                                <img 
-                                    src={p.url} 
-                                    alt={p.title || `Photo ${i+1}`} 
-                                    style={styles.thumb}
-                                    onError={(e) => {
-                                        const target = e.target as HTMLImageElement;
-                                        target.style.display = 'none';
-                                    }}
-                                />
-                            </div>
-                        ))}
+                        {photos.map((p, i) => {
+                            const isLoaded = i < loadedCount;
+                            const isTriggerPoint = i === loadedCount - 6; // Trigger 6 photos before the end
+                            return (
+                                <React.Fragment key={p.filename + i}>
+                                    <div 
+                                        style={isLoaded ? styles.card : styles.placeholderCard}
+                                        onClick={isLoaded ? () => openModal(i) : undefined}
+                                    >
+                                        {isLoaded ? (
+                                            <img 
+                                                src={p.url} 
+                                                alt={p.title || `Photo ${i+1}`} 
+                                                style={styles.thumb}
+                                                loading="lazy"
+                                                onError={(e) => {
+                                                    const target = e.target as HTMLImageElement;
+                                                    target.style.display = 'none';
+                                                }}
+                                            />
+                                        ) : (
+                                            <div style={styles.placeholder}>
+                                                <div style={styles.placeholderIcon}>📷</div>
+                                            </div>
+                                        )}
+                                    </div>
+                                    {isTriggerPoint && loadedCount < photos.length && (
+                                        <div ref={loadMoreRef} style={styles.loadMoreTrigger} />
+                                    )}
+                                </React.Fragment>
+                            );
+                        })}
                     </div>
                 )}
                 {selected && selectedIndex !== null && (
@@ -145,8 +202,9 @@ const GalleryApp: React.FC<GalleryAppProps> = (props) => {
 
 const styles: StyleSheetCSS = {
     container: { width: '100%', height: '100%', backgroundColor: colors.lightGray, overflow: 'auto', fontFamily: 'MSSerif, sans-serif', padding: 8, boxSizing: 'border-box', display: 'flex', flexDirection: 'column' },
-    header: { marginBottom: 8 },
+    header: { marginBottom: 8, display: 'flex', justifyContent: 'space-between', alignItems: 'center' },
     headerTitle: { margin: 0, fontSize: 22, fontWeight: 'bold', color: colors.black },
+    loadingStatus: { fontSize: 12, color: colors.darkGray },
     headerMeta: { fontSize: 12, color: colors.darkGray, display: 'flex', alignItems: 'center', gap: 8 },
     refreshButton: { marginLeft: 'auto', fontSize: 11, padding: '4px 8px' },
     hint: { fontSize: 11, marginTop: 4, color: colors.darkGray, fontStyle: 'italic' },
@@ -154,7 +212,12 @@ const styles: StyleSheetCSS = {
     errorBox: { padding: 24, textAlign: 'center', backgroundColor: colors.white, border: `2px inset ${colors.lightGray}`, margin: 4, color: colors.red },
     grid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 8, width: '100%' },
     card: { position: 'relative', backgroundColor: colors.white, border: `2px outset ${colors.lightGray}`, cursor: 'pointer', display: 'flex', flexDirection: 'column', overflow: 'hidden' },
+    placeholderCard: { position: 'relative', backgroundColor: colors.lightGray, border: `2px inset ${colors.lightGray}`, display: 'flex', flexDirection: 'column', overflow: 'hidden' },
     thumb: { width: '100%', aspectRatio: '3/4', objectFit: 'cover', imageRendering: 'auto' },
+    placeholder: { width: '100%', aspectRatio: '3/4', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: colors.lightGray },
+    placeholderIcon: { fontSize: 48, opacity: 0.3 },
+    loadMoreTrigger: { position: 'absolute', height: 1, width: 1, pointerEvents: 'none' },
+    loadingIndicator: { fontSize: 12, color: colors.darkGray, fontStyle: 'italic' },
     modalOverlay: { position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.75)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2000 },
     modalContent: { backgroundColor: 'var(--surface)', border: '2px solid var(--window-frame)', maxWidth: '92vw', maxHeight: '92vh', display: 'flex', flexDirection: 'column', boxShadow: 'var(--border-raised-outer), var(--border-raised-inner)' },
     modalHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 12px', borderBottom: '2px solid var(--window-frame)', backgroundColor: 'var(--surface)' },
