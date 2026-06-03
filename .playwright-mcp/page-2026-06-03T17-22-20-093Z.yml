@@ -1,0 +1,56 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic: abcdefghijklmnopqrstuvwxzy
+    - generic: abcdefghijklmnopqrstuvwxzy
+    - generic: abcdefghijklmnopqrstuvwxzy
+    - generic: abcdefghijklmnopqrstuvwxzy
+  - generic [ref=e4]:
+    - generic [ref=e7]:
+      - paragraph [ref=e11]: Tomas Palma - Showcase 2025
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - heading "Tomas Palma" [level=1] [ref=e26]
+          - heading "Developer" [level=2] [ref=e27]
+        - generic [ref=e28]:
+          - link "ABOUT" [ref=e29] [cursor=pointer]:
+            - /url: /about
+            - heading "ABOUT" [level=4] [ref=e30]
+          - link "EXPERIENCE" [ref=e31] [cursor=pointer]:
+            - /url: /experience
+            - heading "EXPERIENCE" [level=4] [ref=e32]
+          - link "PROJECTS" [ref=e33] [cursor=pointer]:
+            - /url: /projects
+            - heading "PROJECTS" [level=4] [ref=e34]
+          - link "CONTACT" [ref=e35] [cursor=pointer]:
+            - /url: /contact
+            - heading "CONTACT" [level=4] [ref=e36]
+      - paragraph [ref=e40]: © Copyright 2025 Tomas Palma
+    - generic:
+      - paragraph [ref=e49] [cursor=pointer]: My Showcase
+      - paragraph [ref=e54] [cursor=pointer]: Music Stats
+      - paragraph [ref=e59] [cursor=pointer]: The Oregon Trail
+      - paragraph [ref=e64] [cursor=pointer]: Doom
+      - paragraph [ref=e69] [cursor=pointer]: Scrabble
+      - paragraph [ref=e74] [cursor=pointer]: Credits
+      - paragraph [ref=e79] [cursor=pointer]: Changelog
+      - paragraph [ref=e84] [cursor=pointer]: Friends
+      - paragraph [ref=e89] [cursor=pointer]: Gallery
+      - paragraph [ref=e94] [cursor=pointer]: Control Panel
+    - generic [ref=e96]:
+      - generic [ref=e97]:
+        - paragraph [ref=e100] [cursor=pointer]: Start
+        - generic [ref=e102] [cursor=pointer]:
+          - generic:
+            - paragraph: My Showcase
+      - paragraph [ref=e104]: 7:22 PM
+    - generic [ref=e105]:
+      - generic [ref=e106]: Portfolio OS 0.2.0
+      - generic [ref=e107]: Build 2010
+      - generic [ref=e108]: 2026-06-03
+  - iframe [ref=e109]:
+    - generic [ref=f1e2]:
+      - generic [ref=f1e3]: "Compiled with problems:"
+      - button "Dismiss" [ref=f1e4] [cursor=pointer]: ×
+      - generic [ref=f1e6]:
+        - generic [ref=f1e7]: ERROR
+        - generic [ref=f1e8]: "[eslint] Plugin \"react\" was conflicted between \"package.json » eslint-config-react-app » /home/tomas/Documents/Github/Personal/portfolio-26-os/node_modules/eslint-config-react-app/base.js\" and \"BaseConfig » /home/tomas/Documents/Github/Personal/portfolio-26-os/node_modules/.pnpm/eslint-config-react-app@7.0.1_@babel+plugin-syntax-flow@7.27.1_@babel+core@7.28.3__@bab_373ad238e07178d33be234b1622ecd66/node_modules/eslint-config-react-app/base.js\"."
