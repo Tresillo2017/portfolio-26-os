@@ -27,7 +27,6 @@ export interface ColorScheme {
     desktop: string;
 }
 
-
 export const WALLPAPERS: WallpaperOption[] = [
     { name: 'None', url: '' },
     { name: 'Clouds', url: clouds },

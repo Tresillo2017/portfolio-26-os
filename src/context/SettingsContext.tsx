@@ -1,5 +1,15 @@
-import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { COLOR_SCHEMES, ColorScheme, DEFAULT_SETTINGS } from '../constants/settings';
+import React, {
+    createContext,
+    useCallback,
+    useContext,
+    useEffect,
+    useState,
+} from 'react';
+import {
+    COLOR_SCHEMES,
+    ColorScheme,
+    DEFAULT_SETTINGS,
+} from '../constants/settings';
 
 const STORAGE_KEY = 'portfolio-settings';
 
@@ -66,6 +76,8 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({
 export function useSettingsContext(): SettingsContextValue {
     const ctx = useContext(SettingsContext);
     if (!ctx)
-        throw new Error('useSettingsContext must be used inside SettingsProvider');
+        throw new Error(
+            'useSettingsContext must be used inside SettingsProvider',
+        );
     return ctx;
 }

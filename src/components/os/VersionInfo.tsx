@@ -5,9 +5,9 @@ export interface VersionInfoProps {}
 const VersionInfo: React.FC<VersionInfoProps> = () => {
     // Hardcoded version information - update manually for each release
     const versionInfo = {
-        version: '0.1.7',
-        build: '1090',
-        releaseDate: '2026-01-18'
+        version: '0.2.0',
+        build: '2010',
+        releaseDate: '2026-06-03',
     };
 
     return (
@@ -15,12 +15,8 @@ const VersionInfo: React.FC<VersionInfoProps> = () => {
             <div style={styles.infoLine}>
                 Portfolio OS {versionInfo.version}
             </div>
-            <div style={styles.infoLine}>
-                Build {versionInfo.build}
-            </div>
-            <div style={styles.infoLine}>
-                {versionInfo.releaseDate}
-            </div>
+            <div style={styles.infoLine}>Build {versionInfo.build}</div>
+            <div style={styles.infoLine}>{versionInfo.releaseDate}</div>
         </div>
     );
 };

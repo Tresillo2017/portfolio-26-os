@@ -10,72 +10,6 @@ const Experience: React.FC<ExperienceProps> = (props) => {
             <div style={styles.headerContainer}>
                 <div style={styles.header}>
                     <div style={styles.headerRow}>
-                        <h1>SpainRP</h1>
-                        <a
-                            rel="noreferrer"
-                            target="_blank"
-                            href={'https://spainrp.me/'}
-                        >
-                            <h4>spainrp.me</h4>
-                        </a>
-                    </div>
-                    <div style={styles.headerRow}>
-                        <h3>FullStack Engineer</h3>
-                        <b>
-                            <p>Summer 2021 - Fall 2025</p>
-                        </b>
-                    </div>
-                </div>
-            </div>
-            <div className="text-block">
-                <p>
-                    A minecraft server focused on roleplay and community. 
-                    I developed the Webpage using PHP and MySQL. 
-                    Used C# to create a custom launcher using WinUI 3. 
-                    And Github Actions to automate the deployment of the launcher.
-                </p>
-                <br />
-                <ul>
-                    <li>
-                        <p>
-                            Developed and maintained the server website using PHP and MySQL, 
-                            providing players with server information, news updates, and 
-                            community features.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Created a custom game launcher application using C# and WinUI 3, 
-                            streamlining the player onboarding process and improving user 
-                            accessibility to the server.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Implemented automated deployment pipelines using GitHub Actions, 
-                            ensuring reliable and efficient distribution of launcher updates 
-                            to the player base.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Built server-side modifications and plugins to enhance the 
-                            roleplay experience, focusing on community engagement and 
-                            immersive gameplay mechanics.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Managed database operations and server infrastructure to 
-                            support a growing community of active players and maintain 
-                            optimal server performance.
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            <div style={styles.headerContainer}>
-                <div style={styles.header}>
-                    <div style={styles.headerRow}>
                         <h1>SafeCircle</h1>
                         <a
                             target="_blank"
@@ -95,39 +29,109 @@ const Experience: React.FC<ExperienceProps> = (props) => {
             </div>
             <div className="text-block">
                 <p>
-                    Founded SafeCircle, an AI to detect child predators in online conversations.
-                    Developed a demo using NextJS, and Vercel AI SDK.
-                    Then finetuned a LLM using Unsloth to detect child predators in online conversations.
-                    Learned SysAdmin to support multiple users and handle server management.
+                    Founded SafeCircle, an AI to detect child predators in
+                    online conversations. Developed a demo using NextJS, and
+                    Vercel AI SDK. Then finetuned a LLM using Unsloth to detect
+                    child predators in online conversations. Learned SysAdmin to
+                    support multiple users and handle server management.
                 </p>
                 <br />
                 <ul>
                     <li>
                         <p>
-                            Founded and developed SafeCircle, an AI-powered platform 
-                            designed to detect and prevent child predatory behavior 
-                            in online conversations.
+                            Founded and developed SafeCircle, an AI-powered
+                            platform designed to detect and prevent child
+                            predatory behavior in online conversations.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Built a functional demo application using NextJS and 
-                            Vercel AI SDK, showcasing real-time conversation analysis 
-                            and threat detection capabilities.
+                            Built a functional demo application using NextJS and
+                            Vercel AI SDK, showcasing real-time conversation
+                            analysis and threat detection capabilities.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Fine-tuned a Large Language Model using Unsloth framework 
-                            to accurately identify predatory patterns and behaviors 
-                            in text-based communications.
+                            Fine-tuned a Large Language Model using Unsloth
+                            framework to accurately identify predatory patterns
+                            and behaviors in text-based communications.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Acquired system administration skills to manage multi-user 
-                            environments and maintain server infrastructure supporting 
-                            the AI detection platform.
+                            Acquired system administration skills to manage
+                            multi-user environments and maintain server
+                            infrastructure supporting the AI detection platform.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div style={styles.headerContainer}>
+                <div style={styles.header}>
+                    <div style={styles.headerRow}>
+                        <h1>SpainRP</h1>
+                        <a
+                            rel="noreferrer"
+                            target="_blank"
+                            href={'https://spainrp.me/'}
+                        >
+                            <h4>spainrp.me</h4>
+                        </a>
+                    </div>
+                    <div style={styles.headerRow}>
+                        <h3>FullStack Engineer</h3>
+                        <b>
+                            <p>Summer 2021 - Fall 2025</p>
+                        </b>
+                    </div>
+                </div>
+            </div>
+            <div className="text-block">
+                <p>
+                    A minecraft server focused on roleplay and community. I
+                    developed the Webpage using PHP and MySQL. Used C# to create
+                    a custom launcher using WinUI 3. And Github Actions to
+                    automate the deployment of the launcher.
+                </p>
+                <br />
+                <ul>
+                    <li>
+                        <p>
+                            Developed and maintained the server website using
+                            PHP and MySQL, providing players with server
+                            information, news updates, and community features.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Created a custom game launcher application using C#
+                            and WinUI 3, streamlining the player onboarding
+                            process and improving user accessibility to the
+                            server.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Implemented automated deployment pipelines using
+                            GitHub Actions, ensuring reliable and efficient
+                            distribution of launcher updates to the player base.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Built server-side modifications and plugins to
+                            enhance the roleplay experience, focusing on
+                            community engagement and immersive gameplay
+                            mechanics.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Managed database operations and server
+                            infrastructure to support a growing community of
+                            active players and maintain optimal server
+                            performance.
                         </p>
                     </li>
                 </ul>

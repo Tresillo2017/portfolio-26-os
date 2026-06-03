@@ -43,34 +43,50 @@ const WallpaperSettings: React.FC<WallpaperSettingsProps> = (props) => {
                     <div style={styles.activeTab}>
                         <p style={styles.tabText}>Background</p>
                     </div>
+                    <div style={styles.inactiveTab}>
+                        <p style={styles.tabText}>Screen Saver</p>
+                    </div>
+                    <div style={styles.inactiveTab}>
+                        <p style={styles.tabText}>Appearance</p>
+                    </div>
+                    <div style={styles.inactiveTab}>
+                        <p style={styles.tabText}>Settings</p>
+                    </div>
                 </div>
 
                 <div style={styles.body}>
                     {/* Monitor preview */}
                     <div style={styles.monitorOuter}>
-                        <div style={styles.monitorScreen}>
-                            <div
-                                style={Object.assign({}, styles.monitorPreview, {
-                                    backgroundImage: draft.url
-                                        ? `url(${draft.url})`
-                                        : 'none',
-                                    backgroundColor: '#008080',
-                                    backgroundSize:
-                                        draft.display === 'stretch'
-                                            ? 'cover'
-                                            : 'auto',
-                                    backgroundRepeat:
-                                        draft.display === 'tile'
-                                            ? 'repeat'
-                                            : 'no-repeat',
-                                    backgroundPosition:
-                                        draft.display === 'center'
-                                            ? 'center'
-                                            : 'top left',
-                                })}
-                            />
+                        <div style={styles.monitorBody}>
+                            <div style={styles.screenBezel}>
+                                <div
+                                    style={Object.assign(
+                                        {},
+                                        styles.screenInner,
+                                        {
+                                            backgroundImage: draft.url
+                                                ? `url(${draft.url})`
+                                                : 'none',
+                                            backgroundColor: '#008080',
+                                            backgroundSize:
+                                                draft.display === 'stretch'
+                                                    ? '100% 100%'
+                                                    : 'auto',
+                                            backgroundRepeat:
+                                                draft.display === 'tile'
+                                                    ? 'repeat'
+                                                    : 'no-repeat',
+                                            backgroundPosition:
+                                                draft.display === 'center'
+                                                    ? 'center'
+                                                    : 'top left',
+                                        },
+                                    )}
+                                />
+                            </div>
+                            <div style={styles.powerLight} />
                         </div>
-                        <div style={styles.monitorStand} />
+                        <div style={styles.monitorNeck} />
                         <div style={styles.monitorBase} />
                     </div>
 
@@ -85,11 +101,21 @@ const WallpaperSettings: React.FC<WallpaperSettingsProps> = (props) => {
                                         {},
                                         styles.listItem,
                                         draft.name === w.name &&
-                                            styles.listItemSelected
+                                            styles.listItemSelected,
                                     )}
                                     onMouseDown={() => handleSelect(w)}
                                 >
-                                    <p style={styles.listItemText}>{w.name}</p>
+                                    <p
+                                        style={Object.assign(
+                                            {},
+                                            styles.listItemText,
+                                            draft.name === w.name && {
+                                                color: Colors.white,
+                                            },
+                                        )}
+                                    >
+                                        {w.name}
+                                    </p>
                                 </div>
                             ))}
                         </div>
@@ -99,25 +125,26 @@ const WallpaperSettings: React.FC<WallpaperSettingsProps> = (props) => {
                     <div style={styles.section}>
                         <p style={styles.label}>Display:</p>
                         <div style={styles.radioGroup}>
-                            {(
-                                ['tile', 'center', 'stretch'] as const
-                            ).map((opt) => (
-                                <label key={opt} style={styles.radioLabel}>
-                                    <input
-                                        type="radio"
-                                        name="display"
-                                        value={opt}
-                                        checked={draft.display === opt}
-                                        onChange={() =>
-                                            handleDisplayChange(opt)
-                                        }
-                                    />
-                                    <p style={styles.radioText}>
-                                        {opt.charAt(0).toUpperCase() +
-                                            opt.slice(1)}
-                                    </p>
-                                </label>
-                            ))}
+                            {(['tile', 'center', 'stretch'] as const).map(
+                                (opt) => (
+                                    <label key={opt} style={styles.radioLabel}>
+                                        <input
+                                            type="radio"
+                                            name="display"
+                                            value={opt}
+                                            checked={draft.display === opt}
+                                            onChange={() =>
+                                                handleDisplayChange(opt)
+                                            }
+                                            style={{ marginRight: 4 }}
+                                        />
+                                        <p style={styles.radioText}>
+                                            {opt.charAt(0).toUpperCase() +
+                                                opt.slice(1)}
+                                        </p>
+                                    </label>
+                                ),
+                            )}
                         </div>
                     </div>
                 </div>
@@ -139,15 +166,29 @@ const styles: StyleSheetCSS = {
         backgroundColor: Colors.lightGray,
         padding: 8,
     },
-    tabStrip: { flexDirection: 'row', marginBottom: -1 },
+    tabStrip: {
+        flexDirection: 'row',
+        marginBottom: -1,
+        alignItems: 'flex-end',
+    },
     activeTab: {
         border: `1px solid ${Colors.darkGray}`,
         borderBottomColor: Colors.lightGray,
         borderTopColor: Colors.white,
         borderLeftColor: Colors.white,
         backgroundColor: Colors.lightGray,
+        padding: '3px 12px',
+        marginRight: 2,
+        zIndex: 1,
+    },
+    inactiveTab: {
+        border: `1px solid ${Colors.darkGray}`,
+        borderTopColor: Colors.white,
+        borderLeftColor: Colors.white,
+        backgroundColor: '#b0b3b7',
         padding: '2px 12px',
         marginRight: 2,
+        marginTop: 2,
     },
     tabText: { fontSize: 12, fontFamily: 'MSSerif' },
     body: {
@@ -155,47 +196,97 @@ const styles: StyleSheetCSS = {
         border: `1px solid ${Colors.darkGray}`,
         borderTopColor: Colors.white,
         borderLeftColor: Colors.white,
-        padding: 12,
+        padding: '12px 12px 8px',
         flex: 1,
         backgroundColor: Colors.lightGray,
     },
     monitorOuter: {
         alignItems: 'center',
         flexDirection: 'column',
-        marginBottom: 12,
+        marginBottom: 14,
     },
-    monitorScreen: {
-        width: 160,
-        height: 120,
-        border: `4px solid ${Colors.darkGray}`,
+    monitorBody: {
+        width: 180,
+        height: 140,
+        backgroundColor: Colors.lightGray,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderTop: `2px solid ${Colors.white}`,
+        borderLeft: `2px solid ${Colors.white}`,
+        borderRight: `2px solid ${Colors.darkGray}`,
+        borderBottom: `2px solid ${Colors.darkGray}`,
+    },
+    screenBezel: {
+        width: 148,
+        height: 108,
+        borderTop: `2px solid ${Colors.darkGray}`,
+        borderLeft: `2px solid ${Colors.darkGray}`,
+        borderRight: `2px solid ${Colors.white}`,
+        borderBottom: `2px solid ${Colors.white}`,
+        padding: 2,
         backgroundColor: Colors.black,
-        padding: 4,
-        boxSizing: 'border-box',
+        boxSizing: 'border-box' as const,
     },
-    monitorPreview: { flex: 1, width: '100%', height: '100%' },
-    monitorStand: { width: 20, height: 16, backgroundColor: Colors.darkGray },
-    monitorBase: { width: 60, height: 8, backgroundColor: Colors.darkGray },
-    section: { flexDirection: 'column', marginBottom: 8 },
+    screenInner: {
+        flex: 1,
+        width: '100%',
+        height: '100%',
+    },
+    powerLight: {
+        width: 6,
+        height: 6,
+        backgroundColor: '#00cc00',
+        borderRadius: '50%',
+        marginTop: 4,
+        alignSelf: 'flex-end',
+        marginRight: 8,
+    },
+    monitorNeck: {
+        width: 24,
+        height: 10,
+        backgroundColor: Colors.lightGray,
+        borderLeft: `1px solid ${Colors.darkGray}`,
+        borderRight: `1px solid ${Colors.white}`,
+    },
+    monitorBase: {
+        width: 80,
+        height: 10,
+        backgroundColor: Colors.lightGray,
+        borderTop: `2px solid ${Colors.white}`,
+        borderLeft: `2px solid ${Colors.white}`,
+        borderRight: `2px solid ${Colors.darkGray}`,
+        borderBottom: `2px solid ${Colors.darkGray}`,
+    },
+    section: { flexDirection: 'column', marginBottom: 10 },
     label: { fontSize: 12, fontFamily: 'MSSerif', marginBottom: 4 },
     listBox: {
-        border: `1px solid ${Colors.darkGray}`,
-        borderTopColor: Colors.black,
-        borderLeftColor: Colors.black,
+        borderTop: `1px solid ${Colors.black}`,
+        borderLeft: `1px solid ${Colors.black}`,
+        borderRight: `1px solid ${Colors.white}`,
+        borderBottom: `1px solid ${Colors.white}`,
+        outline: `1px solid ${Colors.darkGray}`,
         backgroundColor: Colors.white,
         height: 110,
         overflowY: 'scroll',
         flexDirection: 'column',
     },
-    listItem: { padding: '2px 6px', cursor: 'default' },
-    listItemSelected: { backgroundColor: Colors.blue, color: Colors.white },
-    listItemText: { fontSize: 12, fontFamily: 'MSSerif' },
-    radioGroup: { flexDirection: 'row', gap: 16 },
+    listItem: {
+        padding: '2px 6px',
+        cursor: 'default',
+        flexShrink: 0,
+    },
+    listItemSelected: {
+        backgroundColor: Colors.blue,
+    },
+    listItemText: { fontSize: 12, fontFamily: 'MSSerif', color: Colors.black },
+    radioGroup: { flexDirection: 'row', gap: 20 },
     radioLabel: {
         flexDirection: 'row',
         alignItems: 'center',
         cursor: 'default',
     },
-    radioText: { fontSize: 12, fontFamily: 'MSSerif', marginLeft: 4 },
+    radioText: { fontSize: 12, fontFamily: 'MSSerif' },
     buttonRow: {
         flexDirection: 'row',
         justifyContent: 'flex-end',

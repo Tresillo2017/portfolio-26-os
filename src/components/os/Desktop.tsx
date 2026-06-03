@@ -148,7 +148,7 @@ const Desktop: React.FC<DesktopProps> = (props) => {
                             {...(app.key === 'controlPanel' && {
                                 addWindow: addWindowForSettings,
                             })}
-                        />
+                        />,
                     );
                 },
             });
@@ -212,7 +212,7 @@ const Desktop: React.FC<DesktopProps> = (props) => {
             newWindows[key].zIndex = getHighestZIndex() + 1;
             setWindows(newWindows);
         },
-        [windows, getHighestZIndex]
+        [windows, getHighestZIndex],
     );
 
     const onWindowInteract = useCallback(
@@ -225,7 +225,7 @@ const Desktop: React.FC<DesktopProps> = (props) => {
                 },
             }));
         },
-        [setWindows, getHighestZIndex]
+        [setWindows, getHighestZIndex],
     );
 
     const startShutdown = useCallback(() => {
@@ -248,12 +248,15 @@ const Desktop: React.FC<DesktopProps> = (props) => {
                 },
             }));
         },
-        [getHighestZIndex]
+        [getHighestZIndex],
     );
 
     const addWindowForSettings = useCallback(
         (key: string, _element: JSX.Element) => {
-            const settingsComponents: Record<string, React.FC<ExtendedWindowAppProps<any>>> = {
+            const settingsComponents: Record<
+                string,
+                React.FC<ExtendedWindowAppProps<any>>
+            > = {
                 'settings-display': WallpaperSettings,
                 'settings-appearance': AppearanceSettings,
             };
@@ -266,10 +269,10 @@ const Desktop: React.FC<DesktopProps> = (props) => {
                     onMinimize={() => minimizeWindow(key)}
                     onClose={() => removeWindow(key)}
                     key={key}
-                />
+                />,
             );
         },
-        [addWindow, onWindowInteract, minimizeWindow, removeWindow]
+        [addWindow, onWindowInteract, minimizeWindow, removeWindow],
     );
 
     const desktopStyle = Object.assign({}, styles.desktop, {
@@ -277,7 +280,8 @@ const Desktop: React.FC<DesktopProps> = (props) => {
         backgroundImage: wallpaper.url ? `url(${wallpaper.url})` : 'none',
         backgroundSize: wallpaper.display === 'stretch' ? 'cover' : 'auto',
         backgroundRepeat: wallpaper.display === 'tile' ? 'repeat' : 'no-repeat',
-        backgroundPosition: wallpaper.display === 'center' ? 'center' : 'top left',
+        backgroundPosition:
+            wallpaper.display === 'center' ? 'center' : 'top left',
     });
 
     return !shutdown ? (
@@ -292,7 +296,7 @@ const Desktop: React.FC<DesktopProps> = (props) => {
                         style={Object.assign(
                             {},
                             { zIndex: windows[key].zIndex },
-                            windows[key].minimized && styles.minimized
+                            windows[key].minimized && styles.minimized,
                         )}
                     >
                         {React.cloneElement(element, {
@@ -334,7 +338,7 @@ const Desktop: React.FC<DesktopProps> = (props) => {
                             onClose={() => removeWindow('controlPanel')}
                             addWindow={addWindowForSettings}
                             key="controlPanel"
-                        />
+                        />,
                     );
                 }}
             />

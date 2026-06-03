@@ -37,8 +37,17 @@ const AppearanceSettings: React.FC<AppearanceSettingsProps> = (props) => {
         >
             <div style={styles.container}>
                 <div style={styles.tabStrip}>
+                    <div style={styles.inactiveTab}>
+                        <p style={styles.tabText}>Background</p>
+                    </div>
+                    <div style={styles.inactiveTab}>
+                        <p style={styles.tabText}>Screen Saver</p>
+                    </div>
                     <div style={styles.activeTab}>
                         <p style={styles.tabText}>Appearance</p>
+                    </div>
+                    <div style={styles.inactiveTab}>
+                        <p style={styles.tabText}>Settings</p>
                     </div>
                 </div>
 
@@ -56,14 +65,14 @@ const AppearanceSettings: React.FC<AppearanceSettingsProps> = (props) => {
                                     styles.sampleTitleBar,
                                     {
                                         background: `linear-gradient(to right, ${draft.titleBarStart}, ${draft.titleBarEnd})`,
-                                    }
+                                    },
                                 )}
                             >
                                 <p
                                     style={Object.assign(
                                         {},
                                         styles.sampleTitleText,
-                                        { color: draft.titleBarText }
+                                        { color: draft.titleBarText },
                                     )}
                                 >
                                     Active Window
@@ -79,7 +88,7 @@ const AppearanceSettings: React.FC<AppearanceSettingsProps> = (props) => {
                                         style={Object.assign(
                                             {},
                                             styles.sampleButtonText,
-                                            { color: draft.buttonText }
+                                            { color: draft.buttonText },
                                         )}
                                     >
                                         Normal
@@ -89,14 +98,14 @@ const AppearanceSettings: React.FC<AppearanceSettingsProps> = (props) => {
                                     style={Object.assign(
                                         {},
                                         styles.sampleButton,
-                                        { opacity: 0.5 }
+                                        { opacity: 0.5 },
                                     )}
                                 >
                                     <p
                                         style={Object.assign(
                                             {},
                                             styles.sampleButtonText,
-                                            { color: draft.buttonText }
+                                            { color: draft.buttonText },
                                         )}
                                     >
                                         Disabled
@@ -139,15 +148,29 @@ const styles: StyleSheetCSS = {
         backgroundColor: Colors.lightGray,
         padding: 8,
     },
-    tabStrip: { flexDirection: 'row', marginBottom: -1 },
+    tabStrip: {
+        flexDirection: 'row',
+        marginBottom: -1,
+        alignItems: 'flex-end',
+    },
     activeTab: {
         border: `1px solid ${Colors.darkGray}`,
         borderBottomColor: Colors.lightGray,
         borderTopColor: Colors.white,
         borderLeftColor: Colors.white,
         backgroundColor: Colors.lightGray,
+        padding: '3px 12px',
+        marginRight: 2,
+        zIndex: 1,
+    },
+    inactiveTab: {
+        border: `1px solid ${Colors.darkGray}`,
+        borderTopColor: Colors.white,
+        borderLeftColor: Colors.white,
+        backgroundColor: '#b0b3b7',
         padding: '2px 12px',
         marginRight: 2,
+        marginTop: 2,
     },
     tabText: { fontSize: 12, fontFamily: 'MSSerif' },
     body: {
@@ -168,14 +191,20 @@ const styles: StyleSheetCSS = {
     },
     sampleWindow: {
         width: 240,
-        border: `2px solid ${Colors.black}`,
+        borderTop: `2px solid ${Colors.white}`,
+        borderLeft: `2px solid ${Colors.white}`,
+        borderRight: `2px solid ${Colors.darkGray}`,
+        borderBottom: `2px solid ${Colors.darkGray}`,
         flexDirection: 'column',
     },
     sampleTitleBar: { height: 18, alignItems: 'center', paddingLeft: 4 },
     sampleTitleText: { fontSize: 10, fontFamily: 'MSSerif' },
     sampleBody: { padding: 8, flexDirection: 'row', gap: 8 },
     sampleButton: {
-        border: `1px solid ${Colors.black}`,
+        borderTop: `1px solid ${Colors.white}`,
+        borderLeft: `1px solid ${Colors.white}`,
+        borderRight: `1px solid ${Colors.darkGray}`,
+        borderBottom: `1px solid ${Colors.darkGray}`,
         padding: '2px 8px',
         backgroundColor: '#c3c6ca',
     },

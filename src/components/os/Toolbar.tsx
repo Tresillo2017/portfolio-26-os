@@ -142,7 +142,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
                         style={Object.assign(
                             {},
                             styles.startContainerOuter,
-                            startWindowOpen && styles.activeTabOuter
+                            startWindowOpen && styles.activeTabOuter,
                         )}
                         onMouseDown={toggleStartWindow}
                     >
@@ -150,7 +150,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
                             style={Object.assign(
                                 {},
                                 styles.startContainer,
-                                startWindowOpen && styles.activeTabInner
+                                startWindowOpen && styles.activeTabInner,
                             )}
                         >
                             <Icon
@@ -171,7 +171,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
                                         styles.tabContainerOuter,
                                         lastActive === key &&
                                             !windows[key].minimized &&
-                                            styles.activeTabOuter
+                                            styles.activeTabOuter,
                                     )}
                                     onMouseDown={() => toggleMinimize(key)}
                                 >
@@ -181,7 +181,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
                                             styles.tabContainer,
                                             lastActive === key &&
                                                 !windows[key].minimized &&
-                                                styles.activeTabInner
+                                                styles.activeTabInner,
                                         )}
                                     >
                                         <Icon

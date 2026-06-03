@@ -118,7 +118,7 @@ const Window: React.FC<WindowProps> = (props) => {
 
     const getXYFromDragProps = (
         clientX: number,
-        clientY: number
+        clientY: number,
     ): { x: number; y: number } => {
         if (!dragProps.current) return { x: 0, y: 0 };
         const { dragStartX, dragStartY } = dragProps.current;
@@ -223,7 +223,7 @@ const Window: React.FC<WindowProps> = (props) => {
                                 },
                                 !windowActive && {
                                     background: Colors.darkGray,
-                                }
+                                },
                             )}
                         >
                             <div style={styles.windowHeader}>
@@ -233,7 +233,7 @@ const Window: React.FC<WindowProps> = (props) => {
                                         style={Object.assign(
                                             {},
                                             styles.windowBarIcon,
-                                            !windowActive && { opacity: 0.5 }
+                                            !windowActive && { opacity: 0.5 },
                                         )}
                                         size={16}
                                     />
@@ -301,21 +301,21 @@ const Window: React.FC<WindowProps> = (props) => {
                                 style={Object.assign(
                                     {},
                                     styles.insetBorder,
-                                    styles.bottomSpacer
+                                    styles.bottomSpacer,
                                 )}
                             />
                             <div
                                 style={Object.assign(
                                     {},
                                     styles.insetBorder,
-                                    styles.bottomSpacer
+                                    styles.bottomSpacer,
                                 )}
                             />
                             <div
                                 style={Object.assign(
                                     {},
                                     styles.insetBorder,
-                                    styles.bottomResizeContainer
+                                    styles.bottomResizeContainer,
                                 )}
                             >
                                 <div
