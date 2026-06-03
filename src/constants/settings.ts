@@ -1,3 +1,17 @@
+import clouds from '../assets/pictures/wallpapers/clouds.png';
+import forest from '../assets/pictures/wallpapers/forest.png';
+import goldWeave from '../assets/pictures/wallpapers/gold-weave.png';
+import houndstooth from '../assets/pictures/wallpapers/houndstooth.png';
+import metalLinks from '../assets/pictures/wallpapers/metal-links.png';
+import sandstone from '../assets/pictures/wallpapers/sandstone.png';
+import bubbles from '../assets/pictures/wallpapers/bubbles.png';
+import blackThatch from '../assets/pictures/wallpapers/black-thatch.png';
+import blueRivets from '../assets/pictures/wallpapers/blue-rivets.png';
+import circles from '../assets/pictures/wallpapers/circles.png';
+import carvedStone from '../assets/pictures/wallpapers/carved-stone.png';
+import pinstripe from '../assets/pictures/wallpapers/pinstripe.png';
+import redBlocks from '../assets/pictures/wallpapers/red-blocks.png';
+
 export interface WallpaperOption {
     name: string;
     url: string;
@@ -27,8 +41,22 @@ export interface CursorScheme {
     };
 }
 
-// Populated in Task 3 after wallpaper assets are downloaded
-export const WALLPAPERS: WallpaperOption[] = [];
+export const WALLPAPERS: WallpaperOption[] = [
+    { name: 'None', url: '' },
+    { name: 'Clouds', url: clouds },
+    { name: 'Forest', url: forest },
+    { name: 'Gold Weave', url: goldWeave },
+    { name: 'Houndstooth', url: houndstooth },
+    { name: 'Metal Links', url: metalLinks },
+    { name: 'Sandstone', url: sandstone },
+    { name: 'Bubbles', url: bubbles },
+    { name: 'Black Thatch', url: blackThatch },
+    { name: 'Blue Rivets', url: blueRivets },
+    { name: 'Circles', url: circles },
+    { name: 'Carved Stone', url: carvedStone },
+    { name: 'Pinstripe', url: pinstripe },
+    { name: 'Red Blocks', url: redBlocks },
+];
 
 export const COLOR_SCHEMES: ColorScheme[] = [
     {
@@ -163,8 +191,8 @@ export const CURSOR_SCHEMES: CursorScheme[] = [
 
 export const DEFAULT_SETTINGS = {
     wallpaper: {
-        name: 'None',
-        url: '',
+        name: 'Clouds',
+        url: clouds,
         display: 'stretch' as const,
     },
     colorScheme: COLOR_SCHEMES[0],
