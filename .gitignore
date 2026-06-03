@@ -27,5 +27,5 @@ yarn-error.log*
 
 .wrangler/*
 
-.remember
-.playwright-mcp
+.remember/
+.playwright-mcp/
