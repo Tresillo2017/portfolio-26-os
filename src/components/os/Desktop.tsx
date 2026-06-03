@@ -13,6 +13,9 @@ import Changelog from '../applications/Changelog';
 import VersionInfo from './VersionInfo';
 import Friends from '../applications/Friends';
 import Gallery from '../applications/Gallery';
+import ControlPanel from '../applications/ControlPanel';
+import WallpaperSettings from '../applications/settings/WallpaperSettings';
+import AppearanceSettings from '../applications/settings/AppearanceSettings';
 import { useSettings } from '../../hooks/useSettings';
 
 export interface DesktopProps {}
@@ -87,6 +90,24 @@ const APPLICATIONS: {
         shortcutIcon: 'gallery',
         component: Gallery,
     },
+    controlPanel: {
+        key: 'controlPanel',
+        name: 'Control Panel',
+        shortcutIcon: 'computerSmall',
+        component: ControlPanel,
+    },
+    'settings-display': {
+        key: 'settings-display',
+        name: 'Display',
+        shortcutIcon: 'computerSmall',
+        component: WallpaperSettings,
+    },
+    'settings-appearance': {
+        key: 'settings-appearance',
+        name: 'Appearance',
+        shortcutIcon: 'computerSmall',
+        component: AppearanceSettings,
+    },
 };
 
 const Desktop: React.FC<DesktopProps> = (props) => {
@@ -110,6 +131,8 @@ const Desktop: React.FC<DesktopProps> = (props) => {
     useEffect(() => {
         const newShortcuts: DesktopShortcutProps[] = [];
         Object.keys(APPLICATIONS).forEach((key) => {
+            // Sub-panel entries don't get desktop shortcuts
+            if (key.startsWith('settings-')) return;
             const app = APPLICATIONS[key];
             newShortcuts.push({
                 shortcutName: app.name,
@@ -122,6 +145,9 @@ const Desktop: React.FC<DesktopProps> = (props) => {
                             onMinimize={() => minimizeWindow(app.key)}
                             onClose={() => removeWindow(app.key)}
                             key={app.key}
+                            {...(app.key === 'controlPanel' && {
+                                addWindow: addWindowForSettings,
+                            })}
                         />
                     );
                 },
@@ -217,12 +243,33 @@ const Desktop: React.FC<DesktopProps> = (props) => {
                     zIndex: getHighestZIndex() + 1,
                     minimized: false,
                     component: element,
-                    name: APPLICATIONS[key].name,
-                    icon: APPLICATIONS[key].shortcutIcon,
+                    name: APPLICATIONS[key]?.name ?? key,
+                    icon: APPLICATIONS[key]?.shortcutIcon ?? 'computerSmall',
                 },
             }));
         },
         [getHighestZIndex]
+    );
+
+    const addWindowForSettings = useCallback(
+        (key: string, _element: JSX.Element) => {
+            const settingsComponents: Record<string, React.FC<ExtendedWindowAppProps<any>>> = {
+                'settings-display': WallpaperSettings,
+                'settings-appearance': AppearanceSettings,
+            };
+            const Component = settingsComponents[key];
+            if (!Component) return;
+            addWindow(
+                key,
+                <Component
+                    onInteract={() => onWindowInteract(key)}
+                    onMinimize={() => minimizeWindow(key)}
+                    onClose={() => removeWindow(key)}
+                    key={key}
+                />
+            );
+        },
+        [addWindow, onWindowInteract, minimizeWindow, removeWindow]
     );
 
     const desktopStyle = Object.assign({}, styles.desktop, {
