@@ -9,21 +9,15 @@ export interface WallpaperState {
     display: 'tile' | 'center' | 'stretch';
 }
 
-export interface CursorState {
-    scheme: string;
-}
-
 export interface SettingsState {
     wallpaper: WallpaperState;
     colorScheme: ColorScheme;
-    cursor: CursorState;
 }
 
 interface SettingsContextValue {
     settings: SettingsState;
     setWallpaper: (wallpaper: WallpaperState) => void;
     setColorScheme: (scheme: ColorScheme) => void;
-    setCursor: (cursor: CursorState) => void;
 }
 
 const SettingsContext = createContext<SettingsContextValue | null>(null);
@@ -60,13 +54,9 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({
         setSettings((prev) => ({ ...prev, colorScheme }));
     }, []);
 
-    const setCursor = useCallback((cursor: CursorState) => {
-        setSettings((prev) => ({ ...prev, cursor }));
-    }, []);
-
     return (
         <SettingsContext.Provider
-            value={{ settings, setWallpaper, setColorScheme, setCursor }}
+            value={{ settings, setWallpaper, setColorScheme }}
         >
             {children}
         </SettingsContext.Provider>

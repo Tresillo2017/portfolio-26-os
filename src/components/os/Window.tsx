@@ -6,6 +6,7 @@ import Icon from '../general/Icon';
 import Button from './Button';
 import DragIndicator from './DragIndicator';
 import ResizeIndicator from './ResizeIndicator';
+import { useSettingsContext } from '../../context/SettingsContext';
 
 export interface WindowProps {
     closeWindow: () => void;
@@ -25,6 +26,9 @@ export interface WindowProps {
 }
 
 const Window: React.FC<WindowProps> = (props) => {
+    const { settings } = useSettingsContext();
+    const { titleBarStart, titleBarEnd } = settings.colorScheme;
+
     const windowRef = useRef<any>(null);
     const dragRef = useRef<any>(null);
     const contentRef = useRef<any>(null);
@@ -211,11 +215,14 @@ const Window: React.FC<WindowProps> = (props) => {
                             style={Object.assign(
                                 {},
                                 styles.topBar,
+                                {
+                                    background: `linear-gradient(to right, ${titleBarStart}, ${titleBarEnd})`,
+                                },
                                 props.windowBarColor && {
-                                    backgroundColor: props.windowBarColor,
+                                    background: props.windowBarColor,
                                 },
                                 !windowActive && {
-                                    backgroundColor: Colors.darkGray,
+                                    background: Colors.darkGray,
                                 }
                             )}
                         >

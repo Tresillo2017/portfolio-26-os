@@ -27,19 +27,6 @@ export interface ColorScheme {
     desktop: string;
 }
 
-export interface CursorScheme {
-    name: string;
-    key: string;
-    cursors: {
-        normal: string;
-        help: string;
-        working: string;
-        busy: string;
-        precision: string;
-        text: string;
-        unavailable: string;
-    };
-}
 
 export const WALLPAPERS: WallpaperOption[] = [
     { name: 'None', url: '' },
@@ -160,35 +147,6 @@ export const COLOR_SCHEMES: ColorScheme[] = [
     },
 ];
 
-// Cursor URLs populated in Task 4 after .cur assets are downloaded
-export const CURSOR_SCHEMES: CursorScheme[] = [
-    {
-        name: 'Standard',
-        key: 'standard',
-        cursors: { normal: '', help: '', working: '', busy: '', precision: '', text: '', unavailable: '' },
-    },
-    {
-        name: '3D White',
-        key: '3d-white',
-        cursors: { normal: '', help: '', working: '', busy: '', precision: '', text: '', unavailable: '' },
-    },
-    {
-        name: '3D Black',
-        key: '3d-black',
-        cursors: { normal: '', help: '', working: '', busy: '', precision: '', text: '', unavailable: '' },
-    },
-    {
-        name: 'Dinosaur',
-        key: 'dinosaur',
-        cursors: { normal: '', help: '', working: '', busy: '', precision: '', text: '', unavailable: '' },
-    },
-    {
-        name: 'Jungle',
-        key: 'jungle',
-        cursors: { normal: '', help: '', working: '', busy: '', precision: '', text: '', unavailable: '' },
-    },
-];
-
 export const DEFAULT_SETTINGS = {
     wallpaper: {
         name: 'Clouds',
@@ -196,7 +154,4 @@ export const DEFAULT_SETTINGS = {
         display: 'stretch' as const,
     },
     colorScheme: COLOR_SCHEMES[0],
-    cursor: {
-        scheme: 'Standard',
-    },
 };

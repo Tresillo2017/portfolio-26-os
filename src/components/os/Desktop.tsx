@@ -11,9 +11,9 @@ import Credits from '../applications/Credits';
 import Music from '../applications/Music';
 import Changelog from '../applications/Changelog';
 import VersionInfo from './VersionInfo';
-import backgroundImage from '../../assets/pictures/background.png';
 import Friends from '../applications/Friends';
 import Gallery from '../applications/Gallery';
+import { useSettings } from '../../hooks/useSettings';
 
 export interface DesktopProps {}
 
@@ -90,6 +90,9 @@ const APPLICATIONS: {
 };
 
 const Desktop: React.FC<DesktopProps> = (props) => {
+    const { settings } = useSettings();
+    const { wallpaper, colorScheme } = settings;
+
     const [windows, setWindows] = useState<DesktopWindows>({});
 
     const [shortcuts, setShortcuts] = useState<DesktopShortcutProps[]>([]);
@@ -222,8 +225,16 @@ const Desktop: React.FC<DesktopProps> = (props) => {
         [getHighestZIndex]
     );
 
+    const desktopStyle = Object.assign({}, styles.desktop, {
+        backgroundColor: colorScheme.desktop,
+        backgroundImage: wallpaper.url ? `url(${wallpaper.url})` : 'none',
+        backgroundSize: wallpaper.display === 'stretch' ? 'cover' : 'auto',
+        backgroundRepeat: wallpaper.display === 'tile' ? 'repeat' : 'no-repeat',
+        backgroundPosition: wallpaper.display === 'center' ? 'center' : 'top left',
+    });
+
     return !shutdown ? (
-        <div style={styles.desktop}>
+        <div style={desktopStyle}>
             {/* For each window in windows, loop over and render  */}
             {Object.keys(windows).map((key) => {
                 const element = windows[key].component;
@@ -282,11 +293,6 @@ const styles: StyleSheetCSS = {
     desktop: {
         minHeight: '100%',
         flex: 1,
-        // backgroundColor: Colors.turquoise,
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
     },
     shutdown: {
         minHeight: '100%',
