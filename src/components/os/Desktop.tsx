@@ -325,6 +325,18 @@ const Desktop: React.FC<DesktopProps> = (props) => {
                 windows={windows}
                 toggleMinimize={toggleMinimize}
                 shutdown={startShutdown}
+                onOpenControlPanel={() => {
+                    addWindow(
+                        'controlPanel',
+                        <ControlPanel
+                            onInteract={() => onWindowInteract('controlPanel')}
+                            onMinimize={() => minimizeWindow('controlPanel')}
+                            onClose={() => removeWindow('controlPanel')}
+                            addWindow={addWindowForSettings}
+                            key="controlPanel"
+                        />
+                    );
+                }}
             />
             <VersionInfo />
         </div>

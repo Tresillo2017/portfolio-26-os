@@ -9,12 +9,14 @@ export interface ToolbarProps {
     windows: DesktopWindows;
     toggleMinimize: (key: string) => void;
     shutdown: () => void;
+    onOpenControlPanel: () => void;
 }
 
 const Toolbar: React.FC<ToolbarProps> = ({
     windows,
     toggleMinimize,
     shutdown,
+    onOpenControlPanel,
 }) => {
     const getTime = () => {
         const date = new Date();
@@ -100,6 +102,22 @@ const Toolbar: React.FC<ToolbarProps> = ({
                         </div>
                         <div style={styles.startWindowContent}>
                             <div style={styles.startMenuSpace} />
+                            <div
+                                className="start-menu-option"
+                                style={styles.startMenuOption}
+                                onMouseDown={() => {
+                                    onOpenControlPanel();
+                                    setStartWindowOpen(false);
+                                }}
+                            >
+                                <Icon
+                                    style={styles.startMenuIcon}
+                                    icon="computerSmall"
+                                />
+                                <p style={styles.startMenuText}>
+                                    <u>S</u>ettings
+                                </p>
+                            </div>
                             <div style={styles.startMenuLine} />
                             <div
                                 className="start-menu-option"
