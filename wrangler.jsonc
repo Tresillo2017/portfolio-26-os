@@ -1,8 +1,10 @@
 {
     "name": "portfolio-26-os",
     "compatibility_date": "2026-01-20",
+    "main": "src/worker.ts",
     "assets": {
-        "directory": "./build"
+        "directory": "./build",
+        "binding": "ASSETS"
     },
     "r2_buckets": [
         {

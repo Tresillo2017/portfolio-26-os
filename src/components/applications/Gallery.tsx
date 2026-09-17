@@ -30,8 +30,8 @@ const GalleryApp: React.FC<GalleryAppProps> = (props) => {
             setLoading(true);
             setError(null);
             
-            // Load photo list from static JSON file
-            const response = await fetch('/photography/photos.json');
+            // Load photo list live from the R2 bucket via the Worker
+            const response = await fetch('/api/photos');
             if (!response.ok) {
                 throw new Error(`Failed to load photos: ${response.status}`);
             }
