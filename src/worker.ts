@@ -1,4 +1,4 @@
-/// <reference types="@cloudflare/workers-types" />
+import type { Fetcher, R2Bucket, R2Object, Request as WorkerRequest, Response as WorkerResponse } from '@cloudflare/workers-types';
 
 export interface Env {
     ASSETS: Fetcher;
@@ -25,7 +25,7 @@ async function listPhotos(bucket: R2Bucket): Promise<string[]> {
 }
 
 export default {
-    async fetch(request: Request, env: Env): Promise<Response> {
+    async fetch(request: WorkerRequest, env: Env): Promise<WorkerResponse> {
         const url = new URL(request.url);
 
         if (url.pathname === '/api/photos') {
@@ -35,7 +35,7 @@ export default {
                     'content-type': 'application/json',
                     'cache-control': 'public, max-age=300',
                 },
-            });
+            }) as unknown as WorkerResponse;
         }
 
         return env.ASSETS.fetch(request);
