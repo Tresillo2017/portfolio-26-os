@@ -11,6 +11,7 @@
     "@types/node": "^16.18.126",
     "@types/react": "^17.0.93",
     "@types/react-dom": "^17.0.26",
+    "aws4fetch": "^1.0.20",
     "axios": "^1.17.0",
     "cors": "^2.8.6",
     "emulators-ui": "^0.73.9",
@@ -33,7 +34,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "organize-photos": "node scripts/organize-photos.js"
+    "prebuild": "node scripts/fetch-photos.js",
+    "fetch-photos": "node scripts/fetch-photos.js"
   },
   "eslintConfig": {
     "extends": [
